@@ -1,2 +1,2 @@
 # Hillforts
-Kotlin Mobile App 
+Kotlin Mobile App - Assignment 1
