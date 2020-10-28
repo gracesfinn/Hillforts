@@ -4,20 +4,19 @@ package org.wit.hillforts.activities
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_hillfort_list.*
 
-import kotlinx.android.synthetic.main.card_hillfort.view.*
+import androidx.recyclerview.widget.LinearLayoutManager
+
+import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import org.jetbrains.anko.intentFor
+
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillforts.R
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 
 
-class HillfortListActivity : AppCompatActivity() {
+class HillfortListActivity : AppCompatActivity(), HillfortListener {
 
     lateinit var app: MainApp
 
@@ -30,7 +29,8 @@ class HillfortListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = PlacemarkAdapter(app.hillforts)
+       // recyclerView.adapter = PlacemarkAdapter(app.hillforts)
+        recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -45,28 +45,11 @@ class HillfortListActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onHillfortClick(hillfort: HillfortModel) {
+        startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort), 0)
+    }
+
 }
 
-class PlacemarkAdapter constructor(private var placemarks: List<HillfortModel>) :
-    RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_hillfort, parent, false))
-    }
-
-    override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val placemark = placemarks[holder.adapterPosition]
-        holder.bind(placemark)
-    }
-
-    override fun getItemCount(): Int = placemarks.size
-
-    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bind(hillfort: HillfortModel) {
-            itemView.hillfortTitle.text = hillfort.title
-            itemView.description.text = hillfort.description
-        }
-    }
-}
 
