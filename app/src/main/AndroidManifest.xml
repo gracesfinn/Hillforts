@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shrine">
         <activity android:name=".activities.HillfortActivity">
+        </activity>
+        <activity android:name=".activities.HillfortListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

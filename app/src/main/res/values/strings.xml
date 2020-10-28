@@ -6,4 +6,5 @@
     <string name="hint_hillfortLocation">Location </string>
     <string name="button_addImage"> Add Image </string>
     <string name="select_hillfort_image">Select hillfort image</string>
+    <string name="menu_addHillfort">Add</string>
 </resources>
