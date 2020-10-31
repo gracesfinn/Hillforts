@@ -7,10 +7,13 @@ import android.os.Handler
 import android.os.PersistableBundle
 import android.view.Window
 import android.view.WindowManager
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.wit.hillforts.R
 import org.wit.hillforts.main.MainApp
+import org.wit.hillforts.activities.WelcomeActivity
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +29,8 @@ class SplashActivity : AppCompatActivity() {
         //4second splash time
         Handler().postDelayed({
             //start main activity
-            startActivity(Intent(this@SplashActivity, HillfortListActivity::class.java))
+            startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
+            info("Splash Activity started..")
             //finish this activity
             finish()
         }, 4000)

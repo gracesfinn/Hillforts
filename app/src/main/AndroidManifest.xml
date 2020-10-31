@@ -30,6 +30,9 @@
             android:label="@string/title_activity_map" />
         <activity android:name=".activities.HillfortActivity" />
         <activity android:name=".activities.HillfortListActivity"/>
+        <activity android:name=".activities.WelcomeActivity"/>
+        <activity android:name=".activities.RegisterActivity"/>
+
 
 
     </application>

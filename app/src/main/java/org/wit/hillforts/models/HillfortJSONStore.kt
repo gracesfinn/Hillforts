@@ -40,8 +40,26 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
 
 
     override fun update(hillfort: HillfortModel) {
-        // todo
+        var foundHillfort: HillfortModel?= hillforts.find {h -> h.id == hillfort.id}
+        if (foundHillfort != null){
+            foundHillfort.title = hillfort.title
+            foundHillfort.description = hillfort.description
+            foundHillfort.image = hillfort.image
+            foundHillfort.lat = hillfort.lat
+            foundHillfort.lng = hillfort.lng
+            foundHillfort.zoom = hillfort.zoom
+            foundHillfort.additionalNotes = hillfort.additionalNotes
+            foundHillfort.visited = hillfort.visited
+            foundHillfort.dateVisited = hillfort.dateVisited
+
+        }
     }
+
+   /* override fun delete(hillfort: HillfortModel) {
+        hillforts.remove(hillfort)
+        serialize()
+    }*/
+
 
     private fun serialize() {
         val jsonString = gsonBuilder.toJson( hillforts, listType)
