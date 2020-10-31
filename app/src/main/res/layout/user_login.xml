@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.hillforts.activities.WelcomeActivity">
+    tools:context="org.wit.hillforts.activities.LoginActivity">
 
 
     <RelativeLayout
@@ -42,7 +42,6 @@
                 android:layout_margin="15dp">
 
 
-
                 <EditText
                     android:id="@+id/login_email"
                     android:layout_width="match_parent"
@@ -77,6 +76,7 @@
                     android:visibility="visible"
                     app:srcCompat="@drawable/logo"
                     tools:visibility="visible" />
+
             </LinearLayout>
 
 

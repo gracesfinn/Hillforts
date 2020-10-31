@@ -1,5 +1,6 @@
 package org.wit.hillforts.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,12 +12,12 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.wit.hillforts.R
-import org.wit.hillforts.sql.DatabaseHelper
+
 
 
 class WelcomeActivity : AppCompatActivity(), AnkoLogger {
 
-    lateinit var handler: DatabaseHelper
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,17 +25,15 @@ class WelcomeActivity : AppCompatActivity(), AnkoLogger {
         info("Welcome Activity started..")
 
 
-       handler= DatabaseHelper(this)
-
-
-
        register.setOnClickListener{
-           startActivityForResult(intentFor<RegisterActivity>(), 0)
+           val intent = Intent(this@WelcomeActivity, RegisterActivity::class.java)
+           startActivity(intent)
        }
 
-       // login.setOnClickListener{
-         //   showLogin()
-        //}
+       login.setOnClickListener{
+           val intent = Intent(this@WelcomeActivity, LoginActivity::class.java)
+           startActivity(intent)
+        }
 
 
     }

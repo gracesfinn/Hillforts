@@ -32,6 +32,7 @@
         <activity android:name=".activities.HillfortListActivity"/>
         <activity android:name=".activities.WelcomeActivity"/>
         <activity android:name=".activities.RegisterActivity"/>
+        <activity android:name=".activities.LoginActivity"/>
 
 
 
