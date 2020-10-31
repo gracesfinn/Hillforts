@@ -24,14 +24,14 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort_list)
-        app = application as MainApp
+        app = application as  MainApp
+
         toolbar.title = title
         setSupportActionBar(toolbar)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-       // recyclerView.adapter = PlacemarkAdapter(app.hillforts)
-        recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
+        loadHillforts()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -51,8 +51,17 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+        loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loadHillforts() {
+        showHillforts(app.hillforts.findAll())
+    }
+
+    fun showHillforts (placemarks: List<HillfortModel>) {
+        recyclerView.adapter = HillfortAdapter(placemarks, this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
 }
