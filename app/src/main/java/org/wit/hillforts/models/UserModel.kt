@@ -1,8 +1,12 @@
 package org.wit.hillforts.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class UserModel(
-    val userId: Int =-1,
-    val name: String,
-    val email: String,
-    val password: String
-)
+    var userId: Long = 0,
+    var name: String ="",
+    var email: String ="",
+    var password: String =""
+) : Parcelable
