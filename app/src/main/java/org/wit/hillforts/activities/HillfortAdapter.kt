@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_hillfort.view.*
 import kotlinx.android.synthetic.main.card_hillfort.view.*
+import kotlinx.android.synthetic.main.card_hillfort.view.description
+import kotlinx.android.synthetic.main.card_hillfort.view.hillfortTitle
 import org.wit.hillforts.R
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
@@ -34,7 +37,11 @@ class HillfortAdapter constructor(
         fun bind(hillfort: HillfortModel, listener: HillfortListener) {
             itemView.hillfortTitle.text = hillfort.title
             itemView.description.text = hillfort.description
-            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
+            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image1))
+
+
+           // itemView.visited.isChecked = hillfort.visited
+
             itemView.setOnClickListener {
                 listener.onHillfortClick(hillfort)
             }

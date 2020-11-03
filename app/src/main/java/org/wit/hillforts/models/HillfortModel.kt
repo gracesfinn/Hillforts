@@ -11,7 +11,8 @@ data class HillfortModel(
     var visited: Boolean = false,
     var dateVisited: Int= 0,
     var additionalNotes: String = "",
-    var image: String = "",
+    var image1: String = "",
+    var image2: String = "",
     var lat : Double = 0.0,
     var lng: Double = 0.0,
     var zoom: Float = 0f

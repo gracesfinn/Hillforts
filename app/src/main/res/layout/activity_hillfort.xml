@@ -92,7 +92,8 @@
                 android:padding="8dp"
                 android:text="Visited"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                />
 
             <EditText
                 android:id="@+id/dateVisited"
@@ -121,22 +122,42 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="14sp"/>
             <Button
-                android:id="@+id/chooseImage"
+                android:id="@+id/chooseImage1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:background="@color/colorAccent"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
-                android:text="@string/button_addImage"
+                android:text="@string/button_addImage1"
                 android:textColor="@color/colorPrimaryLight"
                 android:textSize="16sp"/>
 
             <ImageView
-                android:id="@+id/placemarkImage"
+            android:id="@+id/hillfortImage1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher"/>
+
+            <Button
+                android:id="@+id/chooseImage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorAccent"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="@string/button_addImage2"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/hillfortImage2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@mipmap/ic_launcher"/>
+
+
 
             <Button
                 android:id="@+id/btnAdd"
