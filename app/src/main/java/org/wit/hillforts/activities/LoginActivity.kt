@@ -23,5 +23,11 @@ class LoginActivity: AppCompatActivity(), AnkoLogger {
             startActivity(intent)
         }
 
+        userLoginRegBtn.setOnClickListener(){
+            info("Login Reg Button Clicked")
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

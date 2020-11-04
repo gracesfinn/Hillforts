@@ -41,20 +41,37 @@
                 android:orientation="vertical"
                 android:layout_margin="15dp">
 
-
-                <EditText
-                    android:id="@+id/login_email"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Shrine.TextInputLayout"
+                    android:paddingTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email" />
+                    android:hint="Email"
+                    app:errorEnabled="true">
 
-                <EditText
-                    android:id="@+id/login_password"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/login_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Shrine.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
-                    android:inputType="textPassword"/>
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/login_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
 
                 <Button
                     android:id="@+id/userLoginBtn"
@@ -68,6 +85,25 @@
                     android:text="@string/button_login"
                     android:textColor="@color/colorPrimaryLight"
                     android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Not a member?"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/userLoginRegBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorAccent"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_register"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textSize="16sp"/>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -76,6 +112,9 @@
                     android:visibility="visible"
                     app:srcCompat="@drawable/logo"
                     tools:visibility="visible" />
+
+
+
 
             </LinearLayout>
 

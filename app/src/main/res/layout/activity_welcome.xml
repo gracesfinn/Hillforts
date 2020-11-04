@@ -33,18 +33,8 @@
             android:layout_height="wrap_content"
             android:text="Login" />
 
-        <include
-            android:id="@+id/userRegistration"
-            android:visibility="gone"
-            layout="@layout/user_registration"/>
-
-        <include
-            android:id="@+id/userLogin"
-            android:visibility="gone"
-            layout="@layout/user_login"/>
-
-
     </LinearLayout>
+
 
 </RelativeLayout>
 
