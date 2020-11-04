@@ -8,6 +8,9 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.wit.hillforts.helpers.*
+import org.wit.placemark.helpers.exists
+import org.wit.placemark.helpers.read
+import org.wit.placemark.helpers.write
 import java.util.*
 
 val JSON_FILE_USERS = "user.json"
@@ -25,7 +28,7 @@ class UserJSONStore : UserStore, AnkoLogger {
 
     constructor (context: Context) {
         this.context = context
-        if (exists(context, JSON_FILE)) {
+        if (exists(context, JSON_FILE_USERS)) {
             deserialize()
         }
     }
@@ -46,12 +49,12 @@ class UserJSONStore : UserStore, AnkoLogger {
     } */
 
     private fun serialize() {
-        val jsonString = gsonBuilder.toJson(users, listType)
-        write(context, JSON_FILE, jsonString)
+        val jsonString = gsonBuilderUser.toJson(users, listTypeUser)
+        write(context, JSON_FILE_USERS, jsonString)
     }
 
     private fun deserialize() {
-        val jsonString = read(context, JSON_FILE)
-        users = Gson().fromJson(jsonString, listType)
+        val jsonString = read(context, JSON_FILE_USERS)
+        users = Gson().fromJson(jsonString, listTypeUser)
     }
 }

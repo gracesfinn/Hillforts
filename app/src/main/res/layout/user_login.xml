@@ -41,6 +41,15 @@
                 android:orientation="vertical"
                 android:layout_margin="15dp">
 
+                <TextView
+                    android:id="@+id/registerTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="Login" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.Shrine.TextInputLayout"
                     android:paddingTop="12dp"

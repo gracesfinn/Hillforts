@@ -42,6 +42,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Hillfort"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
             <EditText
                 android:id="@+id/hillfortTitle"
                 android:layout_width="match_parent"
@@ -68,6 +75,20 @@
                 android:padding="8dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="14sp" />
+            <EditText
+                android:id="@+id/additionalNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Additional Notes"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"/>
+
+
             <Button
                 android:id="@+id/hillfortLocation"
                 android:layout_width="match_parent"
@@ -95,32 +116,23 @@
                 android:textSize="14sp"
                 />
 
-            <EditText
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date Visited"
+                android:gravity="center"
+                android:textSize="14sp"/>
+
+            <DatePicker
                 android:id="@+id/dateVisited"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:ems="10"
-                android:hint="Date Visited"
-                android:inputType="date"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+                android:layout_height="match_parent"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
+                />
 
-            <EditText
-                android:id="@+id/additionalNotes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="Additional Notes"
-                android:inputType="textMultiLine"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"/>
+
+
             <Button
                 android:id="@+id/chooseImage1"
                 android:layout_width="match_parent"
@@ -153,6 +165,42 @@
 
             <ImageView
                 android:id="@+id/hillfortImage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/ic_launcher"/>
+
+            <Button
+                android:id="@+id/chooseImage3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorAccent"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="@string/button_addImage2"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/hillfortImage3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/ic_launcher"/>
+
+            <Button
+                android:id="@+id/chooseImage4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/colorAccent"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="@string/button_addImage2"
+                android:textColor="@color/colorPrimaryLight"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/hillfortImage4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@mipmap/ic_launcher"/>

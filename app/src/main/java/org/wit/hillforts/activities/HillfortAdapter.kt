@@ -39,8 +39,15 @@ class HillfortAdapter constructor(
             itemView.description.text = hillfort.description
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image1))
 
+            var visitedString =
+                if (hillfort.visited)
+                    "Visited"
+            else
+                    "Not Visited"
 
-           // itemView.visited.isChecked = hillfort.visited
+            itemView.visited2.text = "${visitedString}"
+
+
 
             itemView.setOnClickListener {
                 listener.onHillfortClick(hillfort)

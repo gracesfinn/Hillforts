@@ -6,9 +6,12 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.wit.hillforts.helpers.*
+import org.wit.placemark.helpers.exists
+import org.wit.placemark.helpers.read
+import org.wit.placemark.helpers.write
 import java.util.*
 
-val JSON_FILE = " hillforts.json"
+val JSON_FILE = "hillforts.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<HillfortModel>>() {}.type
 
@@ -50,7 +53,9 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
             foundHillfort.zoom = hillfort.zoom
             foundHillfort.additionalNotes = hillfort.additionalNotes
             foundHillfort.visited = hillfort.visited
-            foundHillfort.dateVisited = hillfort.dateVisited
+            foundHillfort.dayVisited = hillfort.dayVisited
+            foundHillfort.monthVisited = hillfort.monthVisited
+            foundHillfort.yearVisited = hillfort.yearVisited
 
         }
     }

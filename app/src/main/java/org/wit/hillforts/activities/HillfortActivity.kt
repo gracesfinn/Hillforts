@@ -28,8 +28,12 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     var hillfort = HillfortModel()
     lateinit var app: MainApp
     val IMAGE_REQUEST1 = 1
-    val LOCATION_REQUEST = 2
-    val IMAGE_REQUEST2 = 3
+    val IMAGE_REQUEST2 = 2
+    val IMAGE_REQUEST3 = 3
+    val IMAGE_REQUEST4 = 4
+
+
+    val LOCATION_REQUEST = 5
 
     //var location = Location(52.245696, -7.139102, 15f)
 
@@ -52,14 +56,25 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             hillfort = intent.extras?.getParcelable<HillfortModel>("hillfort_edit")!!
             hillfortTitle.setText(hillfort.title)
             description.setText(hillfort.description)
+            visited.setChecked(hillfort.visited)
+            dateVisited.updateDate(hillfort.yearVisited, hillfort.monthVisited, hillfort.dayVisited)
+
             hillfortImage1.setImageBitmap(readImageFromPath(this, hillfort.image1))
             hillfortImage2.setImageBitmap(readImageFromPath(this, hillfort.image2))
+            hillfortImage3.setImageBitmap(readImageFromPath(this, hillfort.image3))
+            hillfortImage4.setImageBitmap(readImageFromPath(this, hillfort.image4))
 
             if (hillfort.image1 != null) {
                 chooseImage1.setText(R.string.change_hillfort_image)
             }
             if (hillfort.image2 != null) {
                 chooseImage2.setText(R.string.change_hillfort_image)
+            }
+            if (hillfort.image3 != null) {
+                chooseImage3.setText(R.string.change_hillfort_image)
+            }
+            if (hillfort.image4 != null) {
+                chooseImage4.setText(R.string.change_hillfort_image)
             }
             btnAdd.setText(R.string.save_hillfort)
         }
@@ -68,8 +83,11 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             hillfort.title = hillfortTitle.text.toString()
             hillfort.description = description.text.toString()
             hillfort.additionalNotes = additionalNotes.text.toString()
+            hillfort.dayVisited = dateVisited.dayOfMonth
+            hillfort.monthVisited = dateVisited.month
+            hillfort.yearVisited = dateVisited.year
 
-            //Visited, date and location
+
             if (hillfort.title.isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
@@ -81,7 +99,15 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             }
             info("add Button Pressed: $hillfortTitle")
             setResult(AppCompatActivity.RESULT_OK)
-            finish()
+            startActivityForResult(intentFor<HillfortListActivity>(),0)
+        }
+
+
+
+        visited.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked)
+                hillfort.visited = true
+
         }
 
 
@@ -91,6 +117,12 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
         chooseImage2.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST2)
+        }
+        chooseImage3.setOnClickListener {
+            showImagePicker(this, IMAGE_REQUEST3)
+        }
+        chooseImage4.setOnClickListener {
+            showImagePicker(this, IMAGE_REQUEST4)
         }
 
         hillfortLocation.setOnClickListener {
@@ -113,18 +145,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         return super.onCreateOptionsMenu(menu)
     }
 
-  /*fun onCheckboxClicked(view: View) {
-        if (view is CheckBox) {
-            val checked: Boolean = view.isChecked
 
-            when (view.id) {
-                R.id.visited -> {
-                    hillfort.visited = checked
-                }
-
-            }
-        }
-    } */
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
@@ -153,6 +174,20 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
                     hillfort.image2 = data.getData().toString()
                     hillfortImage2.setImageBitmap(readImage(this, resultCode, data))
                     chooseImage2.setText(R.string.change_hillfort_image)
+                }
+            }
+            IMAGE_REQUEST3 -> {
+                if (data != null) {
+                    hillfort.image3 = data.getData().toString()
+                    hillfortImage3.setImageBitmap(readImage(this, resultCode, data))
+                    chooseImage3.setText(R.string.change_hillfort_image)
+                }
+            }
+            IMAGE_REQUEST4 -> {
+                if (data != null) {
+                    hillfort.image4 = data.getData().toString()
+                    hillfortImage4.setImageBitmap(readImage(this, resultCode, data))
+                    chooseImage4.setText(R.string.change_hillfort_image)
                 }
             }
             LOCATION_REQUEST -> {

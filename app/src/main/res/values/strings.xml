@@ -8,6 +8,8 @@
 
     <string name="button_addImage1"> Add First Image </string>
     <string name="button_addImage2"> Add Second Image </string>
+    <string name="button_addImage3"> Add Third Image </string>
+    <string name="button_addImage4"> Add Forth Image </string>
     <string name="select_hillfort_image">Select hillfort image</string>
     <string name="menu_addHillfort">Add</string>
     <string name="menu_cancelHillfort">Cancel</string>
