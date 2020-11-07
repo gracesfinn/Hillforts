@@ -58,6 +58,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             hillfort = intent.extras?.getParcelable<HillfortModel>("hillfort_edit")!!
             hillfortTitle.setText(hillfort.title)
             description.setText(hillfort.description)
+            additionalNotes.setText(hillfort.additionalNotes)
             visited.setChecked(hillfort.visited)
             dateVisited.updateDate(hillfort.yearVisited, hillfort.monthVisited, hillfort.dayVisited)
 
