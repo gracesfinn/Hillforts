@@ -105,7 +105,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             }
             info("add Button Pressed: $hillfortTitle")
             setResult(AppCompatActivity.RESULT_OK)
-            startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
+            startActivityForResult(intentFor<HillfortListActivity>().putExtra("User_edit", user), 0)
         }
 
 

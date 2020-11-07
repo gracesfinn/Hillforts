@@ -84,38 +84,3 @@ class UserJSONStore : UserStore, AnkoLogger {
 }
 
 
-/*override fun seed(user: UserModel) : MutableList<HillfortModel> {
-       user.hillforts.add(HillfortModel(
-            id = generateRandomId(),
-            title = "Coolum",
-            description = "The site is located at Beenlea Head, c. 5km SE of Tramore on the SE coast of Co. Waterford.",
-            visited = false,
-            additionalNotes = "",
-            image1 = "src/main/res/drawable/coolum.PNG",
-            lat = 52.134562,
-            lng = -7.080937,
-       ))
-       user.hillforts.add(HillfortModel(
-           id = generateRandomId(),
-           title = "Dunmore",
-           description = "The headland, known locally as the ÇBlack Knob can be described as a coastal promontory measuring 130m E-W by 60m N-S, projecting E into Waterford Harbour at an altitude of 8m OD. ",
-           visited = false,
-           additionalNotes = "",
-           image1 = "src/main/res/drawable/dunmore.PNG",
-           lat = 52.145954,
-           lng = -6.991018,
-       ))
-       user.hillforts.add(HillfortModel(
-           id = generateRandomId(),
-           title = "Rathmoylan",
-           description = " This coastal promontory is located c. 2.5km SW of Dunmore East town in Co. Waterford. Marked as an ÇEntrenchment on the first edition 6-inch map, the promontory can be described as a triangular area with steep grassy slopes on either flank. ",
-           visited = false,
-           additionalNotes = "",
-           image1 = "src/main/res/drawable/rathmoylan.PNG",
-           lat = 52.134654,
-           lng = -7.035038,
-       ))
-
-       return user.hillforts
-    }
-} */

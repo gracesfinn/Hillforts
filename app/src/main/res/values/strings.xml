@@ -26,6 +26,7 @@
     <string name="login_email_error"> Enter Email</string>
     <string name="login_password_error"> Enter Password</string>
     <string name="menu_deleteHillfort"> Delete</string>
+    <string name="menu_up">Up</string>
 
 
 </resources>

@@ -5,6 +5,4 @@ interface UserStore {
     fun create(user:UserModel)
     fun findUserByEmail(email: String): UserModel?
     fun updateUser(user: UserModel)
-   // fun seed (user: UserModel) : MutableList<HillfortModel>
-
 }
