@@ -23,6 +23,9 @@
     <string name="title_activity_map">Map</string>
     <string name="menu_cancelRegistration">Cancel</string>
     <string name="registration_error"> Enter All Fields</string>
+    <string name="login_email_error"> Enter Email</string>
+    <string name="login_password_error"> Enter Password</string>
+    <string name="menu_deleteHillfort"> Delete</string>
 
 
 </resources>

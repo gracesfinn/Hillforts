@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.user_registration.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 import org.wit.hillforts.R
 import org.wit.hillforts.main.MainApp
+import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
 
 
@@ -20,6 +22,7 @@ class RegisterActivity: AppCompatActivity(), AnkoLogger {
 
     var user = UserModel()
     lateinit var app: MainApp
+    var hillfort = HillfortModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +46,8 @@ class RegisterActivity: AppCompatActivity(), AnkoLogger {
             if(user.name.isNotEmpty() && user.email.isNotEmpty() && user.password.isNotEmpty()) {
                 app.users.create(user.copy())
                 info("Username:  ${user} was registered")
-                val intent = Intent(this@RegisterActivity, WelcomeActivity::class.java)
-                startActivity(intent)
-
-                setResult(AppCompatActivity.RESULT_OK)
-                finish()
+                startActivityForResult(intentFor<WelcomeActivity>().putExtra("User", user), 0)
+                app.hillforts.seed(hillfort)
             }
            else{
                 toast(R.string.registration_error)

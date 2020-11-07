@@ -42,15 +42,15 @@
                 android:layout_margin="15dp">
 
 
+
                 <EditText
-                    android:id="@+id/login_email"
+                    android:id="@+id/update_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Update Email" />
 
                 <EditText
-                    android:id="@+id/login_password"
-
+                    android:id="@+id/update_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Change Password"

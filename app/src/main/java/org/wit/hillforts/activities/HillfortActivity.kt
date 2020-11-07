@@ -21,11 +21,13 @@ import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.helpers.showImagePicker
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.Location
+import org.wit.hillforts.models.UserModel
 import java.lang.StringBuilder
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     var hillfort = HillfortModel()
+    var user = UserModel()
     lateinit var app: MainApp
     val IMAGE_REQUEST1 = 1
     val IMAGE_REQUEST2 = 2
@@ -79,6 +81,10 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             btnAdd.setText(R.string.save_hillfort)
         }
 
+        if (intent.hasExtra("User_edit")) {
+            user = intent.extras?.getParcelable<UserModel>("User_edit")!!
+        }
+
         btnAdd.setOnClickListener() {
             hillfort.title = hillfortTitle.text.toString()
             hillfort.description = description.text.toString()
@@ -99,7 +105,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             }
             info("add Button Pressed: $hillfortTitle")
             setResult(AppCompatActivity.RESULT_OK)
-            startActivityForResult(intentFor<HillfortListActivity>(),0)
+            startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
         }
 
 
@@ -150,7 +156,11 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.item_cancel -> {
-                finish()
+                startActivityForResult(intentFor<HillfortListActivity>().putExtra("User_edit", user), 0)
+            }
+            R.id.item_delete -> {
+                app.hillforts.delete(hillfort)
+                startActivityForResult(intentFor<HillfortListActivity>(), 0)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -201,4 +211,3 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         }
     }
 }
-
