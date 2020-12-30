@@ -64,9 +64,6 @@ class SettingsActivity: AppCompatActivity(), AnkoLogger {
     }
 
 
-
-
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_up, menu)
         return super.onCreateOptionsMenu(menu)
@@ -76,7 +73,7 @@ class SettingsActivity: AppCompatActivity(), AnkoLogger {
         when (item?.itemId) {
             R.id.item_up -> {
                 startActivityForResult( intentFor<HillfortListActivity>().putExtra("User_edit", user), 0)
-                toast("Update Cancelled")
+
 
             }
         }
