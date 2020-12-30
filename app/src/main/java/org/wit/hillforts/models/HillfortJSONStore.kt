@@ -103,6 +103,11 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
 
     }
 
+    override fun findById(id: Long): HillfortModel? {
+        val foundHillfort: HillfortModel? = hillforts.find {it.id == id}
+        return foundHillfort
+    }
+
 
 
     private fun serialize() {

@@ -6,5 +6,6 @@ interface HillfortStore {
     fun update(hillfort: HillfortModel)
     fun delete(hillfort: HillfortModel)
     fun seed(hillfort: HillfortModel)
+    fun findById(id:Long) : HillfortModel?
 
 }

@@ -9,6 +9,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.CheckBox
+import android.widget.RatingBar
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.wit.hillforts.models.HillfortModel
 import org.jetbrains.anko.AnkoLogger
@@ -116,6 +118,15 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
                 hillfort.visited = true
 
         }
+
+      ratingBar.setOnRatingBarChangeListener(object :
+      RatingBar.OnRatingBarChangeListener{
+          override fun onRatingChanged(ratingBar: RatingBar?, rating: Float, fromUser: Boolean) {
+              toast("Rating is: $rating")
+          }
+      }
+
+      )
 
 
         chooseImage1.setOnClickListener {
