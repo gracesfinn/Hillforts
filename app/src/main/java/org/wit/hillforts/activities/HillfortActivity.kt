@@ -62,6 +62,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             description.setText(hillfort.description)
             additionalNotes.setText(hillfort.additionalNotes)
             visited.setChecked(hillfort.visited)
+            favourite.setChecked(hillfort.favourite)
+
             dateVisited.updateDate(hillfort.yearVisited, hillfort.monthVisited, hillfort.dayVisited)
 
             hillfortImage1.setImageBitmap(readImageFromPath(this, hillfort.image1))
@@ -97,6 +99,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             hillfort.yearVisited = dateVisited.year
 
 
+
             if (hillfort.title.isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
@@ -119,11 +122,19 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
         }
 
+        favourite.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked)
+                hillfort.favourite= true
+
+        }
+
       ratingBar.setOnRatingBarChangeListener(object :
       RatingBar.OnRatingBarChangeListener{
           override fun onRatingChanged(ratingBar: RatingBar?, rating: Float, fromUser: Boolean) {
               toast("Rating is: $rating")
+             hillfort.rating = rating
           }
+
       }
 
       )

@@ -114,6 +114,18 @@
                 android:textSize="14sp"
                 />
 
+            <CheckBox
+                android:id="@+id/favourite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:padding="8dp"
+                android:text="Add to Favourites"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

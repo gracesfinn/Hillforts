@@ -18,6 +18,7 @@ interface HillfortListener {
 
 class HillfortAdapter constructor(
     private var hillforts: List<HillfortModel>,
+   // private var favHillforts: HillfortModel?,
     private val listener: HillfortListener) :
     RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
 

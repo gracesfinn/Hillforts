@@ -46,6 +46,7 @@
             android:label="@string/nav_header_title"
             android:theme="@style/Theme.Shrine.NoActionBar" />
         <activity android:name=".activities.HillfortActivity" />
+        <activity android:name=".activities.FavouriteActivity" />
         <activity android:name=".activities.HillfortListActivity" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.RegisterActivity" />

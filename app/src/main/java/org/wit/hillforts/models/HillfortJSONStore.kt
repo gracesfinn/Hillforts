@@ -94,6 +94,8 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
             foundHillfort.zoom = hillfort.zoom
             foundHillfort.additionalNotes = hillfort.additionalNotes
             foundHillfort.visited = hillfort.visited
+            foundHillfort.favourite = hillfort.favourite
+            foundHillfort.rating = hillfort.rating
             foundHillfort.dayVisited = hillfort.dayVisited
             foundHillfort.monthVisited = hillfort.monthVisited
             foundHillfort.yearVisited = hillfort.yearVisited
@@ -101,6 +103,12 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
 
         }
 
+    }
+
+    override fun findFavourite(favourite: Boolean): HillfortModel?
+    {
+        val favouriteHillfort: HillfortModel? = hillforts.find {it.favourite == true}
+        return  favouriteHillfort
     }
 
     override fun findById(id: Long): HillfortModel? {
