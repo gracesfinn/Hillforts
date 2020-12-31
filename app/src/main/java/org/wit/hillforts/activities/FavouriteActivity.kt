@@ -23,6 +23,7 @@ import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
 import org.jetbrains.anko.startActivity
+import org.wit.hillforts.views.location.EditLocationView
 
 
 class FavouriteActivity : AppCompatActivity(),  AnkoLogger, HillfortListener {
@@ -69,7 +70,7 @@ class FavouriteActivity : AppCompatActivity(),  AnkoLogger, HillfortListener {
             R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
             R.id.item_logout -> startActivityForResult<WelcomeActivity>(0)
             R.id.item_navDrawer -> startActivityForResult<NavBarActivity>(0)
-            R.id.item_map -> startActivity<HillfortMapActivity>()
+            R.id.item_map -> startActivity<EditLocationView>()
             R.id.item_favourite -> startActivityForResult<FavouriteActivity>(0)
         }
         return super.onOptionsItemSelected(item)
