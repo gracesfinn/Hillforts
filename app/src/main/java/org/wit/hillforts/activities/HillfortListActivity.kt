@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import kotlinx.android.synthetic.main.activity_hillfort_list.toolbar
+import kotlinx.android.synthetic.main.app_bar_nav.*
 import kotlinx.android.synthetic.main.navigation.*
 import kotlinx.android.synthetic.main.user_login.*
 import org.jetbrains.anko.AnkoLogger
@@ -35,7 +37,7 @@ class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
         app = application as  MainApp
 
         toolbar.title = title
-        setSupportActionBar(toolbar)
+        setSupportActionBar(navToolbar)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
@@ -52,6 +54,8 @@ class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
         if (intent.hasExtra("User_edit")) {
             user = intent.extras?.getParcelable<UserModel>("User_edit")!!
         }
+
+
 
 
     }

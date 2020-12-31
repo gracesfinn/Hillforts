@@ -30,6 +30,7 @@ class FavouriteActivity : AppCompatActivity(),  AnkoLogger, HillfortListener {
     lateinit var app: MainApp
     var user = UserModel()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favourite)

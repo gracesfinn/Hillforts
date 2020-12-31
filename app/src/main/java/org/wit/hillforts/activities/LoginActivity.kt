@@ -37,7 +37,7 @@ class LoginActivity: AppCompatActivity(), AnkoLogger {
                 user = currentUser
                 if (login_password.text.toString() == user.password){
 
-                    startActivityForResult( intentFor<HillfortListActivity>().putExtra("User_edit", user), 0)
+                    startActivityForResult( intentFor<NavBarActivity>().putExtra("User_edit", user), 0)
                     }
                 else  toast(getString(R.string.login_email_error))
             }
