@@ -45,9 +45,10 @@
             android:name=".activities.NavBarActivity"
             android:label="@string/nav_header_title"
             android:theme="@style/Theme.Shrine.NoActionBar" />
-        <activity android:name=".activities.HillfortActivity" />
+        <activity android:name=".views.hillfort.HillfortView" />
         <activity android:name=".activities.FavouriteActivity" />
-        <activity android:name=".activities.HillfortListActivity" />
+        <activity android:name=".views.hillfortlist.HillfortListView" />
+        <activity android:name=".views.map.HillfortMapView" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity" />

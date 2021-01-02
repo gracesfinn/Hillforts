@@ -12,6 +12,7 @@ import org.wit.hillforts.R
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.views.hillfortlist.HillfortListView
 
 
 class LoginActivity: AppCompatActivity(), AnkoLogger {
@@ -37,7 +38,7 @@ class LoginActivity: AppCompatActivity(), AnkoLogger {
                 user = currentUser
                 if (login_password.text.toString() == user.password){
 
-                    startActivityForResult( intentFor<NavBarActivity>().putExtra("User_edit", user), 0)
+                    startActivityForResult( intentFor<HillfortListView>().putExtra("User_edit", user), 0)
                     }
                 else  toast(getString(R.string.login_email_error))
             }

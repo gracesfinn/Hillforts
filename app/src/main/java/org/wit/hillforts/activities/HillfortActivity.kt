@@ -24,6 +24,7 @@ import org.wit.hillforts.helpers.showImagePicker
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.Location
 import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.views.hillfortlist.HillfortListView
 import java.lang.StringBuilder
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
@@ -111,7 +112,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             }
             info("add Button Pressed: $hillfortTitle")
             setResult(AppCompatActivity.RESULT_OK)
-            startActivityForResult(intentFor<HillfortListActivity>().putExtra("User_edit", user), 0)
+            startActivityForResult(intentFor<HillfortListView>().putExtra("User_edit", user), 0)
         }
 
 

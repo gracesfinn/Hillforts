@@ -7,11 +7,13 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.Location
 
 class EditLocationPresenter (val view: EditLocationView) {
 
     var location = Location()
+    var hillfort = HillfortModel()
 
     init {
         location = view.intent.extras?.getParcelable<Location>("location")!!
@@ -35,7 +37,7 @@ class EditLocationPresenter (val view: EditLocationView) {
 
     fun doOnBackPressed() {
         val resultIntent = Intent()
-        resultIntent.putExtra("location", location)
+        resultIntent.putExtra("location", location).putExtra("hillfort", hillfort)
         view.setResult(Activity.RESULT_OK, resultIntent)
         view.finish()
     }
