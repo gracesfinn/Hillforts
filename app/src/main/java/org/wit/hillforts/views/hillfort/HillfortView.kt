@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -15,20 +16,30 @@ import org.wit.hillforts.R
 import org.wit.hillforts.activities.HillfortListActivity
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
+import org.wit.hillforts.views.base.BaseView
 
-class HillfortView: AppCompatActivity(), AnkoLogger {
+class HillfortView: BaseView(),AnkoLogger {
 
     lateinit var presenter: HillfortPresenter
     var hillfort = HillfortModel()
+    lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort)
-        toolbarAdd.title = title
-        setSupportActionBar(toolbarAdd)
+
+        init(toolbarAdd)
+
         info("Hillfort Activity started..")
 
-        presenter = HillfortPresenter(this)
+        presenter = initPresenter(HillfortPresenter(this)) as HillfortPresenter
+
+        mapView2.onCreate(savedInstanceState);
+        mapView2.getMapAsync {
+            map = it
+            presenter.doConfigureMap(map)
+        }
+
 
 
         visited.setOnCheckedChangeListener { _, isChecked ->
@@ -44,35 +55,70 @@ class HillfortView: AppCompatActivity(), AnkoLogger {
         } //Are these being passed? Need to include rating
 
         chooseImage1.setOnClickListener {
+            presenter.cacheHillfort(
+                hillfortTitle.text.toString(),
+                description.text.toString(),
+                additionalNotes.text.toString(),
+                dateVisited.dayOfMonth
+            )
             presenter.doSelectImage1()
         }
         chooseImage2.setOnClickListener {
+            presenter.cacheHillfort(
+                hillfortTitle.text.toString(),
+                description.text.toString(),
+                additionalNotes.text.toString(),
+                dateVisited.dayOfMonth
+            )
             presenter.doSelectImage2()
         }
         chooseImage3.setOnClickListener {
+            presenter.cacheHillfort(
+                hillfortTitle.text.toString(),
+                description.text.toString(),
+                additionalNotes.text.toString(),
+                dateVisited.dayOfMonth
+            )
             presenter.doSelectImage3()
         }
         chooseImage4.setOnClickListener {
+            presenter.cacheHillfort(
+                hillfortTitle.text.toString(),
+                description.text.toString(),
+                additionalNotes.text.toString(),
+                dateVisited.dayOfMonth
+            )
             presenter.doSelectImage4()
         }
         hillfortLocation.setOnClickListener {
+            presenter.cacheHillfort(
+                hillfortTitle.text.toString(),
+                description.text.toString(),
+                additionalNotes.text.toString(),
+                dateVisited.dayOfMonth
+            )
             presenter.doSetLocation()
         }
 
-        //All Hillfort details being deleted once images are added
+
 
         btnAdd.setOnClickListener {
             if (hillfortTitle.text.toString().isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
-                presenter.doAddOrSave(hillfortTitle.text.toString(), description.text.toString(), additionalNotes.text.toString(), dateVisited.dayOfMonth)
+                presenter.doAddOrSave(
+                    hillfortTitle.text.toString(),
+                    description.text.toString(),
+                    additionalNotes.text.toString(),
+                    dateVisited.dayOfMonth
+                )
             }
         }
 
 
     }
 
-    fun showHillfort(hillfort: HillfortModel) {
+    override fun showHillfort(hillfort: HillfortModel) {
         hillfortTitle.setText(hillfort.title)
         description.setText(hillfort.description)
         additionalNotes.setText(hillfort.additionalNotes)
@@ -124,5 +170,34 @@ class HillfortView: AppCompatActivity(), AnkoLogger {
         if (data != null) {
             presenter.doActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    override fun onBackPressed() {
+        presenter.doCancel()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView2.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView2.onLowMemory()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView2.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView2.onResume()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView2.onSaveInstanceState(outState)
     }
 }
