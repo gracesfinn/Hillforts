@@ -2,11 +2,15 @@ package org.wit.hillforts.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.Embedded
 
 @Parcelize
+@Entity
 data class HillfortModel(
     var userId : Long = 0,
-    var id: Long = 0,
+    @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var title: String = "",
     var description: String = "",
     var visited: Boolean = false,
@@ -20,9 +24,7 @@ data class HillfortModel(
     var image2: String = "",
     var image3: String = "",
     var image4: String = "",
-    var lat : Double = 0.0,
-    var lng: Double = 0.0,
-    var zoom: Float = 0f
+    @Embedded var location: Location = Location()
 ): Parcelable
 
 @Parcelize
@@ -33,8 +35,9 @@ data class Location(
 ) : Parcelable
 
 @Parcelize
+@Entity
 data class UserModel(
-    var userId: Long = 0,
+    @PrimaryKey(autoGenerate = true) var userId: Long = 0,
     var name: String ="",
     var email: String ="",
     var password: String ="",

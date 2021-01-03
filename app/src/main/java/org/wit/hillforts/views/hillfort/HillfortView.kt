@@ -32,6 +32,8 @@ import org.wit.hillforts.R
 import org.wit.hillforts.activities.HillfortListActivity
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
+import org.wit.hillforts.models.Location
+
 import org.wit.hillforts.views.base.BaseView
 
 class HillfortView: BaseView(),AnkoLogger {
@@ -154,15 +156,20 @@ class HillfortView: BaseView(),AnkoLogger {
             chooseImage4.setText(R.string.change_hillfort_image)
         }
 
-        lat.setText("%.6f".format(hillfort.lat))
-        lng.setText("%.6f".format(hillfort.lng))
+        this.showLocation(hillfort.location)
 
         btnAdd.setText(R.string.save_hillfort)
 
     }
 
+    override fun showLocation (loc: Location) {
+        lat.setText("%.6f".format(loc.lat))
+        lng.setText("%.6f".format(loc.lng))
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_hillfort, menu)
+        if (presenter.edit) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 

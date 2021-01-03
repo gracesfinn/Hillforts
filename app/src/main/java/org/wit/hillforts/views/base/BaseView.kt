@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import org.jetbrains.anko.AnkoLogger
 import org.wit.hillforts.models.HillfortModel
+import org.wit.hillforts.models.Location
 import org.wit.hillforts.models.UserModel
 import org.wit.hillforts.views.hillfort.HillfortView
 import org.wit.hillforts.views.hillfortlist.HillfortListView
@@ -56,6 +57,8 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     }
 
 
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (data != null) {
@@ -69,6 +72,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
     open fun showHillfort(hillfort: HillfortModel) {}
     open fun showHillforts(hillforts: List<HillfortModel>) {}
+    open fun showLocation(location : Location) {}
     open fun showProgress() {}
     open fun hideProgress() {}
 }

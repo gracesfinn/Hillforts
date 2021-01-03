@@ -9,6 +9,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_map.*
 import org.wit.hillforts.R
+import org.wit.hillforts.models.Location
 import org.wit.hillforts.views.base.BaseView
 
 
@@ -21,8 +22,10 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
+        super.init(toolbar)
 
         presenter = initPresenter(EditLocationPresenter(this)) as EditLocationPresenter
+
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
             it.setOnMarkerDragListener(this)
@@ -34,6 +37,11 @@ class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.O
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_edit_location, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun showLocation(location: Location) {
+        lat.setText("%.6f".format(location.lat))
+        lng.setText("%.6f".format(location.lng))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

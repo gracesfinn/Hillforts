@@ -49,8 +49,8 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
             visited = false,
             additionalNotes = "",
             image1 = "src/main/res/drawable/coolum.PNG",
-            lat = 52.134562,
-            lng = -7.080937,
+           location = Location(52.134562, -7.080937)
+
        ))
        hillforts.add(HillfortModel(
            id = generateRandomId(),
@@ -59,8 +59,8 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
            visited = false,
            additionalNotes = "",
            image1 = "src/main/res/drawable/dunmore.PNG",
-           lat = 52.145954,
-           lng = -6.991018,
+           location = Location(52.145954, -6.991018)
+
        ))
        hillforts.add(HillfortModel(
            id = generateRandomId(),
@@ -69,8 +69,7 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
            visited = false,
            additionalNotes = "",
            image1 = "src/main/res/drawable/rathmoylan.PNG",
-           lat = 52.134654,
-           lng = -7.035038,
+           location = Location(52.134654, -7.035038)
        ))
 
        serialize()
@@ -85,14 +84,13 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
 
 
     override fun update(hillfort: HillfortModel) {
+        val hillfortList = findAll() as ArrayList<HillfortModel>
         var foundHillfort: HillfortModel?= hillforts.find {h -> h.id == hillfort.id}
         if (foundHillfort != null){
             foundHillfort.title = hillfort.title
             foundHillfort.description = hillfort.description
             foundHillfort.image1 = hillfort.image1
-            foundHillfort.lat = hillfort.lat
-            foundHillfort.lng = hillfort.lng
-            foundHillfort.zoom = hillfort.zoom
+            foundHillfort.location = hillfort.location
             foundHillfort.additionalNotes = hillfort.additionalNotes
             foundHillfort.visited = hillfort.visited
             foundHillfort.favourite = hillfort.favourite
@@ -106,11 +104,11 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
 
     }
 
-    override fun findFavourite(favourite: Boolean): HillfortModel?
+    /*override fun findFavourite(favourite: Boolean): HillfortModel?
     {
         val favouriteHillfort: HillfortModel? = hillforts.find {it.favourite == true}
         return  favouriteHillfort
-    }
+    }*/
 
     override fun findById(id: Long): HillfortModel? {
         val foundHillfort: HillfortModel? = hillforts.find {it.id == id}
