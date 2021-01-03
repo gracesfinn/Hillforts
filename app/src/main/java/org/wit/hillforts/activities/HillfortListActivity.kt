@@ -4,11 +4,13 @@ package org.wit.hillforts.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import kotlinx.android.synthetic.main.navigation.*
 import kotlinx.android.synthetic.main.user_login.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -19,6 +21,7 @@ import org.wit.hillforts.R
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
+import org.jetbrains.anko.startActivity
 
 
 class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
@@ -37,6 +40,8 @@ class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         loadHillforts()
+
+
 
         addNew.setOnClickListener()
         {
@@ -61,6 +66,8 @@ class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
 
             R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
             R.id.item_logout -> startActivityForResult<WelcomeActivity>(0)
+            R.id.item_navDrawer -> startActivityForResult<NavBarActivity>(0)
+            R.id.item_map -> startActivity<HillfortMapActivity>()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -88,7 +95,3 @@ class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
     }
 
 }
-
-
-
-
