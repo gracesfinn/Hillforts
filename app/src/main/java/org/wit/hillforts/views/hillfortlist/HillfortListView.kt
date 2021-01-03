@@ -1,67 +1,51 @@
-package org.wit.hillforts.activities
-
+package org.wit.hillforts.views.hillfortlist
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
-import kotlinx.android.synthetic.main.activity_hillfort_list.toolbar
 import kotlinx.android.synthetic.main.app_bar_nav.*
-import kotlinx.android.synthetic.main.navigation.*
-import kotlinx.android.synthetic.main.user_login.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
-
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillforts.R
+import org.wit.hillforts.activities.*
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
-import org.jetbrains.anko.startActivity
 import org.wit.hillforts.views.hillfort.HillfortView
 import org.wit.hillforts.views.location.EditLocationView
+import org.wit.hillforts.views.map.HillfortMapView
 
+class HillfortListView: AppCompatActivity(), HillfortListener {
 
-class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
-
-    lateinit var app: MainApp
+    lateinit var presenter: HillfortListPresenter
     var user = UserModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort_list)
-        app = application as  MainApp
-
         toolbar.title = title
-        setSupportActionBar(navToolbar)
+        setSupportActionBar(toolbar)
+
+
+        presenter = HillfortListPresenter(this)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        loadHillforts()
+
+        recyclerView.adapter =
+            HillfortAdapter(presenter.getHillfort(), this)
+        recyclerView.adapter?.notifyDataSetChanged()
 
 
-
-        addNew.setOnClickListener()
-        {
-            info("Add New Button Clicked")
-            startActivityForResult(intentFor<HillfortView>().putExtra("User_edit", user), 0)
+        addNew.setOnClickListener{
+            presenter.doAddHillfort()
         }
-
-        if (intent.hasExtra("User_edit")) {
-            user = intent.extras?.getParcelable<UserModel>("User_edit")!!
-        }
-
-
-
-
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
@@ -73,31 +57,24 @@ class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
             R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
             R.id.item_logout -> startActivityForResult<WelcomeActivity>(0)
             R.id.item_navDrawer -> startActivityForResult<NavBarActivity>(0)
-            R.id.item_map -> startActivity<EditLocationView>()
+            R.id.item_map -> startActivity<HillfortMapView>()
             R.id.item_favourite -> startActivityForResult<FavouriteActivity>(0)
         }
         return super.onOptionsItemSelected(item)
     }
 
-
     override fun onHillfortClick(hillfort: HillfortModel) {
-        startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort).putExtra("User_edit", user), 0)
+        presenter.doEditHillfort(hillfort)
     }
 
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        loadHillforts()
+        recyclerView.adapter?.notifyDataSetChanged()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun loadHillforts() {
-        showHillforts(app.hillforts.findAll())
-    }
 
-    fun showHillforts (hillforts: List<HillfortModel>) {
-        recyclerView.adapter = HillfortAdapter(hillforts, this)
-        recyclerView.adapter?.notifyDataSetChanged()
-    }
+
 
 }

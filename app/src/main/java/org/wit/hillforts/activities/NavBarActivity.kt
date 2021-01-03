@@ -12,26 +12,33 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_nav.*
 import kotlinx.android.synthetic.main.navigation.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import org.wit.hillforts.R
 import org.wit.hillforts.fragments.HillfortFragment
 import org.wit.hillforts.fragments.HillfortListFragment
+import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.views.location.EditLocationView
 
 class NavBarActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var ft:FragmentTransaction
 
+    var user = UserModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(navToolbar)
 
 
         navView.setNavigationItemSelectedListener(this)
 
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar,
+            this, drawerLayout, navToolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
@@ -54,8 +61,10 @@ class NavBarActivity : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.nav_add-> navigateTo(HillfortFragment.newInstance())
-            R.id.nav_favourites -> navigateTo(HillfortListFragment.newInstance())
+            R.id.nav_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
+            R.id.nav_list -> startActivityForResult<HillfortListActivity>(0)
+            R.id.nav_map -> startActivity<EditLocationView>()
+            R.id.nav_favourites -> startActivityForResult<FavouriteActivity>(0)
 
             else -> toast("You Selected Something Else")
         }

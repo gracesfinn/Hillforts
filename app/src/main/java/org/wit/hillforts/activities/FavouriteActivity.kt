@@ -8,10 +8,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_hillfort.*
 
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
-import kotlinx.android.synthetic.main.activity_hillfort_list.toolbar
-import kotlinx.android.synthetic.main.app_bar_nav.*
 import kotlinx.android.synthetic.main.navigation.*
 import kotlinx.android.synthetic.main.user_login.*
 import org.jetbrains.anko.AnkoLogger
@@ -24,40 +23,38 @@ import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
 import org.jetbrains.anko.startActivity
-import org.wit.hillforts.views.hillfort.HillfortView
 import org.wit.hillforts.views.location.EditLocationView
 
 
-class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
+class FavouriteActivity : AppCompatActivity(),  AnkoLogger, HillfortListener {
 
     lateinit var app: MainApp
     var user = UserModel()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hillfort_list)
-        app = application as  MainApp
+        setContentView(R.layout.activity_favourite)
+        app = application as MainApp
 
         toolbar.title = title
-        setSupportActionBar(navToolbar)
+        setSupportActionBar(toolbar)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
+
         loadHillforts()
 
 
 
         addNew.setOnClickListener()
         {
-            info("Add New Button Clicked")
-            startActivityForResult(intentFor<HillfortView>().putExtra("User_edit", user), 0)
+            startActivityForResult(intentFor<HillfortActivity>().putExtra("User_edit", user), 0)
         }
 
         if (intent.hasExtra("User_edit")) {
             user = intent.extras?.getParcelable<UserModel>("User_edit")!!
         }
-
-
 
 
     }
@@ -101,3 +98,26 @@ class HillfortListActivity : AppCompatActivity(), AnkoLogger, HillfortListener {
     }
 
 }
+
+
+
+
+
+
+
+
+        /*loadFavHillforts()
+
+
+    }
+
+    private fun loadFavHillforts() {
+        showFavHillforts(app.hillforts.findFavourite(true))
+    }
+
+    fun showFavHillforts (hillforts: HillfortModel?) {
+        recyclerView.adapter = HillfortAdapter(favHillforts = HillfortModel(favourite = false))
+        recyclerView.adapter?.notifyDataSetChanged()
+    }
+}
+*/

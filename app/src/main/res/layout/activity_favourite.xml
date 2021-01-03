@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.hillforts.views.hillfortlist.HillfortListView">
+    tools:context="org.wit.hillforts.activities.FavouriteActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -24,18 +24,12 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNew"
