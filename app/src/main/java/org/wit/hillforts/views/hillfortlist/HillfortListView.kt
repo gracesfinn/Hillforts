@@ -13,6 +13,7 @@ import org.wit.hillforts.R
 import org.wit.hillforts.activities.*
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.views.BaseView
+import org.wit.hillforts.views.login.LoginView
 import org.wit.hillforts.views.map.HillfortMapView
 
 class HillfortListView: BaseView(), HillfortListener {
@@ -57,9 +58,9 @@ class HillfortListView: BaseView(), HillfortListener {
         when (item?.itemId) {
 
             R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
-            R.id.item_logout -> startActivityForResult<WelcomeActivity>(0)
+            R.id.item_logout -> presenter.doLogout()
             R.id.item_navDrawer -> startActivityForResult<NavBarActivity>(0)
-            R.id.item_map -> startActivity<HillfortMapView>()
+            R.id.item_map -> presenter.doShowHillfortsMap()
             R.id.item_favourite -> startActivityForResult<FavouriteActivity>(0)
         }
         return super.onOptionsItemSelected(item)

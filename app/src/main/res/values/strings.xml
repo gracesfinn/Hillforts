@@ -34,6 +34,9 @@
     <string name="menu_favourites">Favourites</string>
     <string name="menu_about">About Us</string>
 
+    <string name="menu_showMap">Show Map</string>
+    <string name="menu_logout">Logout</string>
+
     <string name="nav_header_desc">Navigation header</string>
     <string name="nav_header_title">Hillfort Tracker</string>
 

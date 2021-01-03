@@ -17,18 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shrine">
-        <activity android:name=".activities.HillfortMapActivity"></activity>
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+
 
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
@@ -45,6 +38,9 @@
             android:name=".activities.NavBarActivity"
             android:label="@string/nav_header_title"
             android:theme="@style/Theme.Shrine.NoActionBar" />
+    <activity android:name=".views.login.LoginView"
+        android:label="@string/title_activity_login"
+        android:launchMode="singleTop"/>
         <activity android:name=".views.hillfort.HillfortView" />
         <activity android:name=".activities.FavouriteActivity" />
         <activity android:name=".views.hillfortlist.HillfortListView" />

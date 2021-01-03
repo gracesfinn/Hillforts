@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.hillforts.activities.LoginActivity">
+    tools:context="org.wit.hillforts.views.login.LoginView">
 
 
     <RelativeLayout
@@ -114,13 +114,21 @@
                     android:textColor="@color/colorPrimaryLight"
                     android:textSize="16sp"/>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/logo"
-                    tools:visibility="visible" />
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="362dp"
+                    android:layout_height="86dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userLoginRegBtn" />
+
+
 
 
 
