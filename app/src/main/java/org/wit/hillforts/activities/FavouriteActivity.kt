@@ -23,6 +23,7 @@ import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
 import org.jetbrains.anko.startActivity
+import org.wit.hillforts.views.hillfort.HillfortView
 import org.wit.hillforts.views.location.EditLocationView
 
 
@@ -49,7 +50,7 @@ class FavouriteActivity : AppCompatActivity(),  AnkoLogger, HillfortListener {
 
         addNew.setOnClickListener()
         {
-            startActivityForResult(intentFor<HillfortActivity>().putExtra("User_edit", user), 0)
+            startActivityForResult(intentFor<HillfortView>().putExtra("User_edit", user), 0)
         }
 
         if (intent.hasExtra("User_edit")) {
@@ -78,7 +79,7 @@ class FavouriteActivity : AppCompatActivity(),  AnkoLogger, HillfortListener {
 
 
     override fun onHillfortClick(hillfort: HillfortModel) {
-        startActivityForResult(intentFor<HillfortActivity>().putExtra("hillfort_edit", hillfort).putExtra("User_edit", user), 0)
+        startActivityForResult(intentFor<HillfortView>().putExtra("hillfort_edit", hillfort).putExtra("User_edit", user), 0)
     }
 
 

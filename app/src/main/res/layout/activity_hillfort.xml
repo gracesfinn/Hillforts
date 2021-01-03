@@ -11,7 +11,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0"
+    tools:layout_editor_absoluteX="-16dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -37,68 +39,110 @@
         android:layout_below="@id/appBarLayout"
         android:fillViewport="true">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Hillfort"
-                android:gravity="center"
-                android:textSize="20sp"/>
+                android:layout_height="136dp" >
 
-            <EditText
-                android:id="@+id/hillfortTitle"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_margin="8dp"
-                android:autofillHints=""
-                android:hint="@string/hint_hillfortTitle"
-                android:inputType="text"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
 
-            <EditText
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:hint="@string/hint_hillfortDescription"
-                android:inputType="textMultiLine"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
-            <EditText
-                android:id="@+id/additionalNotes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:hint="Additional Notes"
-                android:inputType="textMultiLine"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"/>
+                    <EditText
+                    android:id="@+id/hillfortTitle"
+                    android:layout_width="248dp"
+                    android:layout_height="57dp"
+                    android:layout_marginStart="8dp"
+
+                    android:autofillHints=""
+                    android:hint="@string/hint_hillfortTitle"
+                    android:inputType="text"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                    android:id="@+id/description"
+                    android:layout_width="249dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/hint_hillfortDescription"
+                    android:inputType="textMultiLine"
+                    android:padding="8dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/lat"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hillfortTitle" />
+
+                    <requestFocus />
+
+                    <TextView
+                        android:id="@+id/lat"
+                        android:layout_width="95dp"
+                        android:layout_height="19dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="28dp"
+                        android:text="00.000000"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toTopOf="@+id/lng"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                    <TextView
+                        android:id="@+id/lng"
+                        android:layout_width="92dp"
+                        android:layout_height="19dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="28dp"
+                        android:text="00.000000"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lat" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="90dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Location"
+                        android:textAlignment="center"
+                        app:layout_constraintStart_toEndOf="@+id/hillfortTitle"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-            <Button
-                android:id="@+id/hillfortLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@color/colorAccent"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:stateListAnimator="@null"
-                android:text="@string/button_location"
-                android:textColor="@color/colorPrimaryLight"
-                android:textSize="16sp"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView2"
+                android:layout_width="363dp"
+                android:layout_height="162dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hillfortLocation" />
 
 
             <CheckBox
@@ -245,6 +289,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@mipmap/ic_launcher"/>
+
+            <EditText
+                android:id="@+id/additionalNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Additional Notes"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/lat"
+                app:layout_constraintHorizontal_bias="0.0"
+                />
 
 
 

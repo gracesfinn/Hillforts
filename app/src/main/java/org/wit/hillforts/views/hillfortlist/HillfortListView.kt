@@ -16,36 +16,44 @@ import org.wit.hillforts.activities.*
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.views.base.BaseView
 import org.wit.hillforts.views.hillfort.HillfortView
 import org.wit.hillforts.views.location.EditLocationView
 import org.wit.hillforts.views.map.HillfortMapView
 
-class HillfortListView: AppCompatActivity(), HillfortListener {
+class HillfortListView: BaseView(), HillfortListener {
 
     lateinit var presenter: HillfortListPresenter
-    var user = UserModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort_list)
-        toolbar.title = title
         setSupportActionBar(toolbar)
 
 
-        presenter = HillfortListPresenter(this)
+        presenter = initPresenter(HillfortListPresenter(this)) as HillfortListPresenter
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        recyclerView.adapter =
-            HillfortAdapter(presenter.getHillfort(), this)
-        recyclerView.adapter?.notifyDataSetChanged()
+
 
 
         addNew.setOnClickListener{
             presenter.doAddHillfort()
         }
+
+        presenter.loadHillforts()
     }
+
+
+    override fun showHillforts(hillforts: List<HillfortModel>) {
+        recyclerView.adapter = HillfortAdapter(hillforts, this)
+        recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
@@ -70,7 +78,7 @@ class HillfortListView: AppCompatActivity(), HillfortListener {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+       presenter.loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)
     }
 

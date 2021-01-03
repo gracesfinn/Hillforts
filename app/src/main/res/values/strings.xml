@@ -29,13 +29,14 @@
     <string name="login_password_error"> Enter Password</string>
     <string name="menu_deleteHillfort"> Delete</string>
     <string name="menu_up">Up</string>
+    <string name="menu_save">Save</string>
 
     <string name="menu_favourites">Favourites</string>
     <string name="menu_about">About Us</string>
 
     <string name="nav_header_desc">Navigation header</string>
     <string name="nav_header_title">Hillfort Tracker</string>
-    <string name="nav_header_subtitle">voteforhomer@android.com</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -51,6 +52,8 @@
     <string name="hillfort_image_placeholder">Hillfort Image</string>
     <string name="hillfort_title_placeholder">Hillfort Title</string>
     <string name="hillfort_description_placeholder">Hillfort Description</string>
+
+    <string name="title_activity_login"> Signup/Login to Hillfort Tracker</string>
 
 
 </resources>
