@@ -8,6 +8,22 @@ import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
+import kotlinx.android.synthetic.main.activity_hillfort.additionalNotes
+import kotlinx.android.synthetic.main.activity_hillfort.btnAdd
+import kotlinx.android.synthetic.main.activity_hillfort.chooseImage1
+import kotlinx.android.synthetic.main.activity_hillfort.chooseImage2
+import kotlinx.android.synthetic.main.activity_hillfort.chooseImage3
+import kotlinx.android.synthetic.main.activity_hillfort.chooseImage4
+import kotlinx.android.synthetic.main.activity_hillfort.dateVisited
+import kotlinx.android.synthetic.main.activity_hillfort.description
+import kotlinx.android.synthetic.main.activity_hillfort.hillfortImage1
+import kotlinx.android.synthetic.main.activity_hillfort.hillfortImage2
+import kotlinx.android.synthetic.main.activity_hillfort.hillfortImage3
+import kotlinx.android.synthetic.main.activity_hillfort.hillfortImage4
+import kotlinx.android.synthetic.main.activity_hillfort.hillfortTitle
+import kotlinx.android.synthetic.main.activity_hillfort.toolbarAdd
+import kotlinx.android.synthetic.main.activity_hillfort.visited
+import kotlinx.android.synthetic.main.fragment_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
@@ -38,6 +54,7 @@ class HillfortView: BaseView(),AnkoLogger {
         mapView2.getMapAsync {
             map = it
             presenter.doConfigureMap(map)
+            it.setOnMapClickListener { presenter.doSetLocation()}
         }
 
 
@@ -90,15 +107,7 @@ class HillfortView: BaseView(),AnkoLogger {
             )
             presenter.doSelectImage4()
         }
-        hillfortLocation.setOnClickListener {
-            presenter.cacheHillfort(
-                hillfortTitle.text.toString(),
-                description.text.toString(),
-                additionalNotes.text.toString(),
-                dateVisited.dayOfMonth
-            )
-            presenter.doSetLocation()
-        }
+
 
 
 
@@ -119,11 +128,11 @@ class HillfortView: BaseView(),AnkoLogger {
     }
 
     override fun showHillfort(hillfort: HillfortModel) {
-        hillfortTitle.setText(hillfort.title)
-        description.setText(hillfort.description)
-        additionalNotes.setText(hillfort.additionalNotes)
-        visited.setChecked(hillfort.visited)
-        favourite.setChecked(hillfort.favourite)
+       if(hillfortTitle.text.isEmpty()) hillfortTitle.setText(hillfort.title)
+        if(description.text.isEmpty()) description.setText(hillfort.description)
+        if(additionalNotes.text.isEmpty()) additionalNotes.setText(hillfort.additionalNotes)
+        visited.setChecked(hillfort.visited)//Boolean
+        favourite.setChecked(hillfort.favourite) //Boolean
 
         dateVisited.updateDate(hillfort.yearVisited, hillfort.monthVisited, hillfort.dayVisited)
 
@@ -144,6 +153,10 @@ class HillfortView: BaseView(),AnkoLogger {
         if (hillfort.image4 != null) {
             chooseImage4.setText(R.string.change_hillfort_image)
         }
+
+        lat.setText("%.6f".format(hillfort.lat))
+        lng.setText("%.6f".format(hillfort.lng))
+
         btnAdd.setText(R.string.save_hillfort)
 
     }
@@ -194,6 +207,7 @@ class HillfortView: BaseView(),AnkoLogger {
     override fun onResume() {
         super.onResume()
         mapView2.onResume()
+        presenter.doResartLocationUpdates()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

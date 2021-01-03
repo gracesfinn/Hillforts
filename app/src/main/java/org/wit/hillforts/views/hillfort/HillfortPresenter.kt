@@ -6,6 +6,8 @@ import android.provider.ContactsContract
 import android.widget.RatingBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -37,7 +39,7 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
     var edit = false
     var map: GoogleMap? = null
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
-
+    val locationRequest = createDefaultLocationRequest()
 
 
     init {
@@ -67,6 +69,21 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
                 locationUpdate(defaultLocation.lat, defaultLocation.lng)
             }
         }
+
+    @SuppressLint("MissingPermission")
+    fun doResartLocationUpdates() {
+        var locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                if (locationResult != null && locationResult.locations != null) {
+                    val l = locationResult.locations.last()
+                    locationUpdate(l.latitude, l.longitude)
+                }
+            }
+        }
+        if (!edit) {
+            locationService.requestLocationUpdates(locationRequest, locationCallback, null)
+        }
+    }
 
     fun doConfigureMap(m: GoogleMap) {
         map = m

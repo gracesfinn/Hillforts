@@ -32,7 +32,7 @@ class EditLocationPresenter (view: BaseView) : BasePresenter(view) {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
 
-    fun doUpdateLocation(lat: Double, lng: Double, zoom: Float) {
+    fun doUpdateLocation(lat: Double, lng: Double) {
         location.lat = lat
         location.lng = lng
     }

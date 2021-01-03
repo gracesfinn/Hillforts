@@ -25,7 +25,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarker
         setContentView(R.layout.activity_map)
         location = intent.extras?.getParcelable<Location>("location")!!
         val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(R.id.mapView) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
