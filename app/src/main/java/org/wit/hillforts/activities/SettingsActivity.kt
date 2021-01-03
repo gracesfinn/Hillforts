@@ -18,6 +18,7 @@ import org.wit.hillforts.R
 import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.views.hillfortlist.HillfortListView
 
 class SettingsActivity: AppCompatActivity(), AnkoLogger {
     lateinit var app: MainApp
@@ -58,7 +59,7 @@ class SettingsActivity: AppCompatActivity(), AnkoLogger {
             }
 
             info("Update Button Clicked")
-            startActivityForResult(intentFor<HillfortListActivity>().putExtra("User", user), 0)
+            startActivityForResult(intentFor<HillfortListView>().putExtra("User", user), 0)
             toast("Details Updated")
         }
     }
@@ -72,7 +73,7 @@ class SettingsActivity: AppCompatActivity(), AnkoLogger {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.item_up -> {
-                startActivityForResult( intentFor<HillfortListActivity>().putExtra("User_edit", user), 0)
+                startActivityForResult( intentFor<HillfortListView>().putExtra("User_edit", user), 0)
 
 
             }

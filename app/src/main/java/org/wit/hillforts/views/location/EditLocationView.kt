@@ -3,14 +3,12 @@ package org.wit.hillforts.views.location
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_map.*
 import org.wit.hillforts.R
 import org.wit.hillforts.models.Location
-import org.wit.hillforts.views.base.BaseView
+import org.wit.hillforts.views.BaseView
 
 
 

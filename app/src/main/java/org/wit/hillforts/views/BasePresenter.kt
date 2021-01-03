@@ -1,4 +1,4 @@
-package org.wit.hillforts.views.base
+package org.wit.hillforts.views
 
 import android.content.Intent
 import org.wit.hillforts.main.MainApp

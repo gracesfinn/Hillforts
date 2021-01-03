@@ -15,7 +15,7 @@ import org.wit.hillforts.helpers.*
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.Location
 import org.wit.hillforts.models.UserModel
-import org.wit.hillforts.views.base.*
+import org.wit.hillforts.views.*
 import org.wit.hillforts.views.hillfortlist.HillfortListView
 
 class HillfortPresenter (view: BaseView) : BasePresenter(view) {

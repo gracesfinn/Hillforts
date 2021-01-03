@@ -4,21 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
-import kotlinx.android.synthetic.main.app_bar_nav.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hillforts.R
 import org.wit.hillforts.activities.*
-import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
-import org.wit.hillforts.models.UserModel
-import org.wit.hillforts.views.base.BaseView
-import org.wit.hillforts.views.hillfort.HillfortView
-import org.wit.hillforts.views.location.EditLocationView
+import org.wit.hillforts.views.BaseView
 import org.wit.hillforts.views.map.HillfortMapView
 
 class HillfortListView: BaseView(), HillfortListener {

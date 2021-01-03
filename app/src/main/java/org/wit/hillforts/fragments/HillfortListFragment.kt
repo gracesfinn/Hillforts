@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import kotlinx.android.synthetic.main.fragment_hillfort_list.view.*
 import org.wit.hillforts.R
 import org.wit.hillforts.activities.HillfortAdapter
-import org.wit.hillforts.models.HillfortJSONStore
+import org.wit.hillforts.models.json.HillfortJSONStore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

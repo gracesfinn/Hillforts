@@ -1,4 +1,4 @@
-package org.wit.hillforts.room
+package org.wit.hillforts.models.room
 
 import androidx.room.*
 import org.wit.hillforts.models.HillfortModel

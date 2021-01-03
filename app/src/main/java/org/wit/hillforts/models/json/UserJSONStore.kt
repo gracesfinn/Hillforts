@@ -1,4 +1,4 @@
-package org.wit.hillforts.models
+package org.wit.hillforts.models.json
 
 
 
@@ -9,6 +9,8 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.user_login.*
 import org.jetbrains.anko.AnkoLogger
 import org.wit.hillforts.helpers.*
+import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.models.UserStore
 import org.wit.placemark.helpers.exists
 import org.wit.placemark.helpers.read
 import org.wit.placemark.helpers.write

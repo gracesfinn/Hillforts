@@ -1,15 +1,13 @@
 package org.wit.hillforts.views.map
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
-import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.activity_hillfort_map.*
 import org.wit.hillforts.R
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
-import org.wit.hillforts.views.base.BaseView
+import org.wit.hillforts.views.BaseView
 
 class HillfortMapView: BaseView(), GoogleMap.OnMarkerClickListener {
 

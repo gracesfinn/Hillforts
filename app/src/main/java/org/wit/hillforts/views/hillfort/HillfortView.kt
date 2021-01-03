@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.RatingBar
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.activity_hillfort.additionalNotes
@@ -23,18 +21,15 @@ import kotlinx.android.synthetic.main.activity_hillfort.hillfortImage4
 import kotlinx.android.synthetic.main.activity_hillfort.hillfortTitle
 import kotlinx.android.synthetic.main.activity_hillfort.toolbarAdd
 import kotlinx.android.synthetic.main.activity_hillfort.visited
-import kotlinx.android.synthetic.main.fragment_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.hillforts.R
-import org.wit.hillforts.activities.HillfortListActivity
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.Location
 
-import org.wit.hillforts.views.base.BaseView
+import org.wit.hillforts.views.BaseView
 
 class HillfortView: BaseView(),AnkoLogger {
 

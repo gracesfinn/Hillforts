@@ -1,4 +1,4 @@
-package org.wit.hillforts.models
+package org.wit.hillforts.models.json
 
 import android.content.Context
 import com.google.gson.Gson
@@ -6,6 +6,9 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.wit.hillforts.helpers.*
+import org.wit.hillforts.models.HillfortModel
+import org.wit.hillforts.models.HillfortStore
+import org.wit.hillforts.models.Location
 import org.wit.placemark.helpers.exists
 import org.wit.placemark.helpers.read
 import org.wit.placemark.helpers.write

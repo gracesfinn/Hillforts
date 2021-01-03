@@ -7,10 +7,9 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import org.wit.hillforts.main.MainApp
 import org.wit.hillforts.models.HillfortModel
-import org.wit.hillforts.views.base.BasePresenter
-import org.wit.hillforts.views.base.BaseView
+import org.wit.hillforts.views.BasePresenter
+import org.wit.hillforts.views.BaseView
 
 class HillfortMapPresenter(view: BaseView) : BasePresenter(view) {
 

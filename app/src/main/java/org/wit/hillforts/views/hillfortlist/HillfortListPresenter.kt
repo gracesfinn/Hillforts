@@ -3,9 +3,9 @@ package org.wit.hillforts.views.hillfortlist
 import org.jetbrains.anko.*
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
-import org.wit.hillforts.views.base.BasePresenter
-import org.wit.hillforts.views.base.BaseView
-import org.wit.hillforts.views.base.VIEW
+import org.wit.hillforts.views.BasePresenter
+import org.wit.hillforts.views.BaseView
+import org.wit.hillforts.views.VIEW
 
 class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 

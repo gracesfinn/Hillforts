@@ -20,6 +20,7 @@ import org.wit.hillforts.R
 import org.wit.hillforts.fragments.HillfortFragment
 import org.wit.hillforts.fragments.HillfortListFragment
 import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.views.hillfortlist.HillfortListView
 import org.wit.hillforts.views.location.EditLocationView
 
 class NavBarActivity : AppCompatActivity(),
@@ -62,7 +63,7 @@ class NavBarActivity : AppCompatActivity(),
 
         when (item.itemId) {
             R.id.nav_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
-            R.id.nav_list -> startActivityForResult<HillfortListActivity>(0)
+            R.id.nav_list -> startActivityForResult<HillfortListView>(0)
             R.id.nav_map -> startActivity<EditLocationView>()
             R.id.nav_favourites -> startActivityForResult<FavouriteActivity>(0)
 
