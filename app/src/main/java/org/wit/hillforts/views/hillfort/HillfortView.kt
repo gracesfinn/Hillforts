@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.activity_hillfort.additionalNotes
@@ -133,10 +134,10 @@ class HillfortView: BaseView(),AnkoLogger {
 
         dateVisited.updateDate(hillfort.yearVisited, hillfort.monthVisited, hillfort.dayVisited)
 
-        hillfortImage1.setImageBitmap(readImageFromPath(this, hillfort.image1))
-        hillfortImage2.setImageBitmap(readImageFromPath(this, hillfort.image2))
-        hillfortImage3.setImageBitmap(readImageFromPath(this, hillfort.image3))
-        hillfortImage4.setImageBitmap(readImageFromPath(this, hillfort.image4))
+        Glide.with(this).load(hillfort.image1).into(hillfortImage1);
+        Glide.with(this).load(hillfort.image2).into(hillfortImage2);
+        Glide.with(this).load(hillfort.image3).into(hillfortImage3);
+        Glide.with(this).load(hillfort.image4).into(hillfortImage4);
 
         if (hillfort.image1 != null) {
             chooseImage1.setText(R.string.change_hillfort_image)

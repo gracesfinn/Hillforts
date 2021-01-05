@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_hillfort.view.*
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import kotlinx.android.synthetic.main.card_hillfort.view.description
@@ -38,7 +39,7 @@ class HillfortAdapter constructor(
         fun bind(hillfort: HillfortModel, listener: HillfortListener) {
             itemView.hillfortTitle.text = hillfort.title
             itemView.description.text = hillfort.description
-            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image1))
+            Glide.with(itemView.context).load(hillfort.image1).into(itemView.imageIcon);
 
             var visitedString =
                 if (hillfort.visited)
