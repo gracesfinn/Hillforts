@@ -41,4 +41,8 @@ class HillfortStoreRoom(val context: Context) : HillfortStore {
         dao.seedHillfort(hillfort)
     }
 
+    override fun clear(){
+
+    }
+
 }

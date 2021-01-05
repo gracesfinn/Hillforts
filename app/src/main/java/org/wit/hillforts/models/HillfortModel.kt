@@ -11,6 +11,7 @@ import androidx.room.Embedded
 data class HillfortModel(
     var userId : Long = 0,
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
+    var fbId : String = "",
     var title: String = "",
     var description: String = "",
     var visited: Boolean = false,

@@ -8,5 +8,6 @@ interface HillfortStore {
     fun seed(hillfort: HillfortModel)
     fun findById(id:Long) : HillfortModel?
     //fun findFavourite(favourite:Boolean) : HillfortModel?
+    fun clear()
 
 }
