@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.hillforts.views.hillfortlist.HillfortListView">
+    tools:context="org.wit.hillforts.views.hillfort.HillfortView">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,8 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:titleTextColor="@color/colorPrimaryLight" />
-
-
     </com.google.android.material.appbar.AppBarLayout>
 
 

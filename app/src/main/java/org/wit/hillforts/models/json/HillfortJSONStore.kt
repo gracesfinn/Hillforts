@@ -107,11 +107,11 @@ class HillfortJSONStore : HillfortStore, AnkoLogger {
 
     }
 
-    /*override fun findFavourite(favourite: Boolean): HillfortModel?
+    override fun findFavourites(favourite: Boolean):  MutableList<HillfortModel>
     {
-        val favouriteHillfort: HillfortModel? = hillforts.find {it.favourite == true}
-        return  favouriteHillfort
-    }*/
+       // val favouriteHillfort: HillfortModel? = hillforts.find {it.favourite == true}
+        return  hillforts
+    }
 
     override fun findById(id: Long): HillfortModel? {
         val foundHillfort: HillfortModel? = hillforts.find {it.id == id}

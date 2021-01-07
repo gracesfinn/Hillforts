@@ -33,6 +33,11 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
         return foundHillfort
     }
 
+    override fun findFavourites(favourite: Boolean): List<HillfortModel> {
+       // val favouriteHillforts : HillfortModel? = hillforts.find{ p -> p.favourite == true}
+        return hillforts
+    }
+
     override fun create(hillfort: HillfortModel) {
         val key = db.child("users").child(userId).child("hillforts").push().key
         key?.let {

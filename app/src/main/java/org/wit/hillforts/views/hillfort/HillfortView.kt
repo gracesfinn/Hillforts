@@ -2,8 +2,12 @@ package org.wit.hillforts.views.hillfort
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Explode
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
+import android.widget.RatingBar
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
@@ -40,9 +44,17 @@ class HillfortView: BaseView(),AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        with(window) {
+            requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+            // set set the transition to be shown when the user enters this activity
+            enterTransition = Explode()
+            // set the transition to be shown when the user leaves this activity
+            exitTransition = Explode()
+        }
         setContentView(R.layout.activity_hillfort)
 
-        init(toolbarAdd, true)
+        super.init(toolbarAdd, true)
 
         info("Hillfort Activity started..")
 
@@ -59,15 +71,23 @@ class HillfortView: BaseView(),AnkoLogger {
 
         visited.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked)
-                hillfort.visited = true
+                presenter.doCheckVisited(true)
 
         }
 
         favourite.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked)
-                hillfort.favourite = true
+                presenter.doCheckFavourite(true)
+        }
 
-        } //Are these being passed? Need to include rating
+        ratingBar.setOnRatingBarChangeListener(object :
+            RatingBar.OnRatingBarChangeListener {
+            override fun onRatingChanged(ratignBar: RatingBar?, rating: Float, fromUser: Boolean) {
+                toast("Rating is: $rating")
+                presenter.doCheckRatingBar(rating)
+            }
+
+        })
 
         chooseImage1.setOnClickListener {
             presenter.cacheHillfort(
@@ -176,6 +196,9 @@ class HillfortView: BaseView(),AnkoLogger {
             }
             R.id.item_delete -> {
                 presenter.doDelete()
+            }
+            R.id.item_cancel -> {
+                presenter.doCancel()
             }
         }
         return super.onOptionsItemSelected(item)

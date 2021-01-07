@@ -17,6 +17,9 @@ interface HillfortDao {
     @Query("select * from HillfortModel where id = :id")
     fun findById(id: Long): HillfortModel
 
+    @Query("select * from HillfortModel where favourite = :favourite")
+    fun findFavourites(favourite: Boolean): List<HillfortModel>
+
     @Update
     fun update(hillfort: HillfortModel)
 

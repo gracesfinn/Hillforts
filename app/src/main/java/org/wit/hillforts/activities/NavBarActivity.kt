@@ -22,6 +22,7 @@ import org.wit.hillforts.fragments.HillfortListFragment
 import org.wit.hillforts.models.UserModel
 import org.wit.hillforts.views.hillfortlist.HillfortListView
 import org.wit.hillforts.views.location.EditLocationView
+import org.wit.hillforts.views.map.HillfortMapView
 
 class NavBarActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
@@ -64,7 +65,7 @@ class NavBarActivity : AppCompatActivity(),
         when (item.itemId) {
             R.id.nav_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
             R.id.nav_list -> startActivityForResult<HillfortListView>(0)
-            R.id.nav_map -> startActivity<EditLocationView>()
+            R.id.nav_map -> startActivity<HillfortMapView>()
             R.id.nav_favourites -> startActivityForResult<FavouriteActivity>(0)
 
             else -> toast("You Selected Something Else")

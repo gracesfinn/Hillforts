@@ -46,9 +46,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="action_addHillfort">Add Hillfort</string>
     <string name="title_activity_hillfort_home">Hillfort Home</string>
+
+    <string name="title_activity_favourites">Favourites</string>
     <string name="action_settings">Account Settings</string>
     <string name="action_listHillforts">List All Hillforts</string>
     <string name="action_map">Map of Hillforts</string>
+    <string name="action_favourites">Favourites</string>
 
 
 

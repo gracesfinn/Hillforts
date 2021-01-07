@@ -25,6 +25,10 @@ class HillfortStoreRoom(val context: Context) : HillfortStore {
 
     }
 
+    override fun findFavourites(favourite: Boolean): List<HillfortModel> {
+        return dao.findFavourites(true)
+    }
+
     override fun create(hillfort: HillfortModel) {
         dao.create(hillfort)
     }

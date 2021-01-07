@@ -1,14 +1,17 @@
 package org.wit.hillforts.views
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.AnkoLogger
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.Location
 import org.wit.hillforts.models.UserModel
+import org.wit.hillforts.views.favourites.FavouriteView
 import org.wit.hillforts.views.hillfort.HillfortView
 import org.wit.hillforts.views.hillfortlist.HillfortListView
 import org.wit.hillforts.views.location.EditLocationView
@@ -22,7 +25,7 @@ val IMAGE_REQUEST4 = 4
 val LOCATION_REQUEST = 5
 
 enum class VIEW {
-    LOCATION, HILLFORT, MAPS, LIST, LOGIN
+    LOCATION, HILLFORT, MAPS, LIST, LOGIN, FAVOURITE
 }
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     var basePresenter: BasePresenter? = null
@@ -37,6 +40,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.MAPS -> intent = Intent(this, HillfortMapView::class.java)
             VIEW.LIST -> intent = Intent(this, HillfortListView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
+            VIEW.FAVOURITE -> intent = Intent(this, FavouriteView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)
@@ -80,6 +84,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
 
     open fun showHillfort(hillfort: HillfortModel) {}
     open fun showHillforts(hillforts: List<HillfortModel>) {}
+    open fun showFavHillforts(hillforts: List<HillfortModel>) {}
     open fun showLocation(location : Location) {}
     open fun showProgress() {}
     open fun hideProgress() {}

@@ -27,6 +27,10 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.MAPS)
     }
 
+    fun doShowFavourites(){
+        view?.navigateTo(VIEW.FAVOURITE)
+    }
+
     fun doLogout() {
         FirebaseAuth.getInstance().signOut()
         app.hillforts.clear()

@@ -163,8 +163,24 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
         showImagePicker(view!!, IMAGE_REQUEST4)
     }
 
-    fun doCheckVisited(){
-//  Need to finish
+    fun doCheckVisited(
+        visited : Boolean
+    ){
+            hillfort.visited = visited
+
+    }
+
+
+    fun doCheckFavourite(
+        favourite : Boolean
+    ){
+        hillfort.favourite = favourite
+    }
+
+   fun doCheckRatingBar(
+    rating:Float
+    ){
+        hillfort.rating = rating
     }
 
     fun doSetLocation() {

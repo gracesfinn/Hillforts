@@ -9,5 +9,6 @@ interface HillfortStore {
     fun findById(id:Long) : HillfortModel?
     //fun findFavourite(favourite:Boolean) : HillfortModel?
     fun clear()
+    fun findFavourites(favourite:Boolean) : List<HillfortModel>
 
 }
