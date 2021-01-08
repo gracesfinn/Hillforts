@@ -9,7 +9,7 @@ import androidx.room.Embedded
 @Parcelize
 @Entity
 data class HillfortModel(
-    var userId : Long = 0,
+    var userId : String = "",
     @PrimaryKey(autoGenerate = true) var id: Long = 0,
     var fbId : String = "",
     var title: String = "",

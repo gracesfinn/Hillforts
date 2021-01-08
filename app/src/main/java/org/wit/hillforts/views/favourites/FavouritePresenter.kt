@@ -11,7 +11,7 @@ class FavouritePresenter (view: BaseView) : BasePresenter(view){
 
     fun loadFavHillforts() {
         doAsync {
-            val hillforts = app.hillforts.findFavourites(favourite = true)
+            val hillforts = app.hillforts.findAll()
             uiThread {
                 view?.showFavHillforts(hillforts)
             }

@@ -28,6 +28,7 @@ class LoginView : BaseView() {
             }
             else {
                 presenter.doSignUp(email,password)
+
             }
         }
 

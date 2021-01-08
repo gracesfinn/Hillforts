@@ -5,9 +5,8 @@ interface HillfortStore {
     fun create(hillfort:HillfortModel)
     fun update(hillfort: HillfortModel)
     fun delete(hillfort: HillfortModel)
-    fun seed(hillfort: HillfortModel)
+    fun seed()
     fun findById(id:Long) : HillfortModel?
-    //fun findFavourite(favourite:Boolean) : HillfortModel?
     fun clear()
     fun findFavourites(favourite:Boolean) : List<HillfortModel>
 
