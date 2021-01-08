@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_hillfort.view.*
-import kotlinx.android.synthetic.main.card_hillfort.view.*
-import kotlinx.android.synthetic.main.card_hillfort.view.description
-import kotlinx.android.synthetic.main.card_hillfort.view.hillfortTitle
+import kotlinx.android.synthetic.main.new_card.view.*
+import kotlinx.android.synthetic.main.new_card.view.description
+import kotlinx.android.synthetic.main.new_card.view.hillfortTitle
+
 import org.wit.hillforts.R
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
@@ -24,7 +25,7 @@ class HillfortAdapter constructor(
     RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_hillfort, parent, false))
+        return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.new_card, parent, false))
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {

@@ -2,7 +2,9 @@ package org.wit.hillforts.views.favourites
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_favourite.*
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import kotlinx.android.synthetic.main.activity_hillfort_list.recyclerView
 import org.wit.hillforts.R
 import org.wit.hillforts.activities.HillfortAdapter
 import org.wit.hillforts.activities.HillfortListener

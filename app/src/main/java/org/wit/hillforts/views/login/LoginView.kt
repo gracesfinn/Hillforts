@@ -2,9 +2,7 @@ package org.wit.hillforts.views.login
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.logIn
-import kotlinx.android.synthetic.main.activity_welcome.*
+
 import kotlinx.android.synthetic.main.user_login.*
 import org.jetbrains.anko.toast
 import org.wit.hillforts.R
@@ -17,7 +15,7 @@ class LoginView : BaseView() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_login)
-        init(toolbarAdd, true)
+        setSupportActionBar(toolbarAdd)
         progressBar.visibility = View.GONE
 
         presenter = initPresenter(LoginPresenter(this)) as LoginPresenter

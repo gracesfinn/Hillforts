@@ -5,6 +5,9 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_hillfort_map.*
+import kotlinx.android.synthetic.main.activity_hillfort_map.mapView
+import kotlinx.android.synthetic.main.activity_hillfort_map.toolbar
+import kotlinx.android.synthetic.main.activity_map.*
 import org.wit.hillforts.R
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
