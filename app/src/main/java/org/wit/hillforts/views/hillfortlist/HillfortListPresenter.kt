@@ -1,12 +1,16 @@
 package org.wit.hillforts.views.hillfortlist
 
+import android.system.Os.remove
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.*
+import org.wit.hillforts.helpers.checkLocationPermissions
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.UserModel
 import org.wit.hillforts.views.BasePresenter
 import org.wit.hillforts.views.BaseView
 import org.wit.hillforts.views.VIEW
+import org.jetbrains.anko.toast
 
 class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -14,20 +18,19 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     var user = UserModel()
 
 
-    fun doAddHillfort()
-    {
+    fun doAddHillfort() {
         view?.navigateTo(VIEW.HILLFORT)
     }
 
-    fun doEditHillfort(hillfort: HillfortModel){
+    fun doEditHillfort(hillfort: HillfortModel) {
         view?.navigateTo(VIEW.HILLFORT, 0, "hillfort_edit", hillfort)
     }
 
-    fun doShowHillfortsMap(){
+    fun doShowHillfortsMap() {
         view?.navigateTo(VIEW.MAPS)
     }
 
-    fun doShowFavourites(){
+    fun doShowFavourites() {
         view?.navigateTo(VIEW.FAVOURITE)
     }
 
@@ -38,13 +41,28 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun loadHillforts() {
-        doAsync {
-            val hillforts = app.hillforts.findAll()
-            uiThread {
-                view?.showHillforts(hillforts)
+        val hillforts = app.hillforts.findAll()
+        if (view?.intent!!.hasExtra("favourite")) {
+            val favHillforts = hillforts.toMutableList()
+            for (hillfort: HillfortModel in favHillforts) {
+                if (hillfort.favourite == false) {
+                    favHillforts.remove(hillfort)
+                }
             }
+
+            doAsync {
+                val hillforts = app.hillforts.findAll()
+                uiThread {
+                    if (view!!.intent.hasExtra("favourite")) {
+                        view?.showHillforts(favHillforts)
+                    } else {
+                        view?.showHillforts(hillforts)
+                    }
+
+                }
+            }
+
         }
 
     }
-
 }

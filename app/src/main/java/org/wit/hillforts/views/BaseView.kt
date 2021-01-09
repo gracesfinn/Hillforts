@@ -40,7 +40,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.MAPS -> intent = Intent(this, HillfortMapView::class.java)
             VIEW.LIST -> intent = Intent(this, HillfortListView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
-            VIEW.FAVOURITE -> intent = Intent(this, FavouriteView::class.java)
+            VIEW.FAVOURITE -> intent = Intent(this, HillfortListView::class.java).putExtra("favourite", true)
         }
         if (key != "") {
             intent.putExtra(key, value)

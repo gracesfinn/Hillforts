@@ -25,7 +25,7 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
 
 
 
-    override fun findAll(): List<HillfortModel> {
+    override fun findAll(): MutableList<HillfortModel> {
         return hillforts
     }
 

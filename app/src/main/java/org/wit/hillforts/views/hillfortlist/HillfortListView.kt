@@ -34,8 +34,11 @@ import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import org.wit.hillforts.R
 import org.wit.hillforts.activities.*
+import org.wit.hillforts.hillfortlist.HillfortAdapter
+import org.wit.hillforts.hillfortlist.HillfortListener
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.views.BaseView
+import org.wit.hillforts.views.VIEW
 import org.wit.hillforts.views.favourites.FavouriteView
 import org.wit.hillforts.views.location.EditLocationView
 import org.wit.hillforts.views.login.LoginView
@@ -44,11 +47,6 @@ import org.wit.hillforts.views.map.HillfortMapView
 class HillfortListView: BaseView(), HillfortListener {
 
     lateinit var presenter: HillfortListPresenter
-
-    lateinit var front_anim:AnimatorSet
-    lateinit var back_anim:AnimatorSet
-
-    var isFront = true
 
 
 
@@ -62,17 +60,15 @@ class HillfortListView: BaseView(), HillfortListener {
         bottomAppBar.setOnMenuItemClickListener{menuItem ->
 
             when(menuItem.itemId){
-                R.id.item_favourite -> presenter.doShowFavourites()
+
                 R.id.item_logout -> presenter.doLogout()
                 // R.id.item_navDrawer -> startActivityForResult(intentFor<NavBarActivity>().putExtra("User_edit", user),0)
                 R.id.item_map -> presenter.doShowHillfortsMap()
                 R.id.item_favourite -> presenter.doShowFavourites()
+                R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>(), 0)
             }
             true
         }
-
-
-
 
 
         presenter = initPresenter(HillfortListPresenter(this)) as HillfortListPresenter
@@ -111,7 +107,7 @@ class HillfortListView: BaseView(), HillfortListener {
             R.id.item_logout -> presenter.doLogout()
            // R.id.item_navDrawer -> startActivityForResult(intentFor<NavBarActivity>().putExtra("User_edit", user),0)
             R.id.item_map -> presenter.doShowHillfortsMap()
-            R.id.item_favourite -> presenter.doShowFavourites()
+            R.id.item_favourite -> presenter.loadHillforts()
         }
         return super.onOptionsItemSelected(item)
     }

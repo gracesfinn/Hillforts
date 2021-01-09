@@ -1,4 +1,4 @@
-package org.wit.hillforts.activities
+package org.wit.hillforts.hillfortlist
 
 import android.view.LayoutInflater
 import android.view.View

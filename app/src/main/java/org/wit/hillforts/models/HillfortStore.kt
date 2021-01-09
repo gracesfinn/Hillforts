@@ -1,7 +1,7 @@
 package org.wit.hillforts.models
 
 interface HillfortStore {
-    fun findAll(): List<HillfortModel>
+    fun findAll(): MutableList<HillfortModel>
     fun create(hillfort:HillfortModel)
     fun update(hillfort: HillfortModel)
     fun delete(hillfort: HillfortModel)

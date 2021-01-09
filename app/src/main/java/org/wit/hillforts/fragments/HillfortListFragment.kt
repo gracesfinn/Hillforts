@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import kotlinx.android.synthetic.main.fragment_hillfort_list.view.*
 import org.wit.hillforts.R
-import org.wit.hillforts.activities.HillfortAdapter
+import org.wit.hillforts.hillfortlist.HillfortAdapter
 import org.wit.hillforts.models.json.HillfortJSONStore
 
 // TODO: Rename parameter arguments, choose names that match
