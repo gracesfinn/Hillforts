@@ -49,7 +49,7 @@ class SettingsActivity: AppCompatActivity(), AnkoLogger {
 
         settingsBtn.setOnClickListener() {
             user.email = update_email.text.toString()
-            user.password = update_password.text.toString()
+            //user.password = update_password.text.toString()
 
             if (user.email.isEmpty() && user.password.isEmpty())
                 toast(getString(R.string.registration_error))

@@ -19,6 +19,7 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
 
     val hillforts = ArrayList<HillfortModel>()
 
+
     lateinit var userId : String
     lateinit var db: DatabaseReference
     lateinit var st: StorageReference
@@ -235,4 +236,10 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
             }
         }
     }
+
+
+
+
 }
+
+

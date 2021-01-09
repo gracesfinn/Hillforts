@@ -17,6 +17,7 @@ import org.wit.hillforts.views.hillfortlist.HillfortListView
 import org.wit.hillforts.views.location.EditLocationView
 import org.wit.hillforts.views.map.HillfortMapView
 import org.wit.hillforts.views.login.LoginView
+import org.wit.hillforts.views.settings.SettingsView
 
 val IMAGE_REQUEST1 = 1
 val IMAGE_REQUEST2 = 2
@@ -25,12 +26,12 @@ val IMAGE_REQUEST4 = 4
 val LOCATION_REQUEST = 5
 
 enum class VIEW {
-    LOCATION, HILLFORT, MAPS, LIST, LOGIN, FAVOURITE
+    LOCATION, HILLFORT, MAPS, LIST, LOGIN, FAVOURITE, SETTINGS
 }
 open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     var basePresenter: BasePresenter? = null
 
-    var user = FirebaseAuth.getInstance().currentUser
+    open var user = FirebaseAuth.getInstance().currentUser
 
     fun navigateTo(view: VIEW, code: Int = 0, key: String = "", value: Parcelable? = null) {
         var intent = Intent(this, HillfortListView::class.java)
@@ -41,6 +42,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
             VIEW.LIST -> intent = Intent(this, HillfortListView::class.java)
             VIEW.LOGIN -> intent = Intent(this, LoginView::class.java)
             VIEW.FAVOURITE -> intent = Intent(this, HillfortListView::class.java).putExtra("favourite", true)
+            VIEW.SETTINGS ->  intent = Intent(this, SettingsView::class.java)
         }
         if (key != "") {
             intent.putExtra(key, value)

@@ -45,6 +45,10 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.LOGIN)
     }
 
+    fun doUpdateUser() {
+        view?.navigateTo(VIEW.SETTINGS)
+    }
+
     fun loadHillforts() {
         doAsync {
             val hillforts = app.hillforts.findAll()

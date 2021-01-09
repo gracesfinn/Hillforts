@@ -60,10 +60,9 @@ class HillfortListView: BaseView(), HillfortListener {
             when(menuItem.itemId){
 
                 R.id.item_logout -> presenter.doLogout()
-                // R.id.item_navDrawer -> startActivityForResult(intentFor<NavBarActivity>().putExtra("User_edit", user),0)
                 R.id.item_map -> presenter.doShowHillfortsMap()
                 R.id.item_favourite -> presenter.doShowFavourites()
-                R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>(), 0)
+                R.id.item_settings -> presenter.doUpdateUser()
             }
             true
         }
@@ -92,17 +91,17 @@ class HillfortListView: BaseView(), HillfortListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
 
-            R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
+            R.id.item_settings -> presenter.doUpdateUser()
             R.id.item_logout -> presenter.doLogout()
             R.id.item_home-> presenter.doShowList()
             R.id.item_map -> presenter.doShowHillfortsMap()
             R.id.item_favourite -> presenter.loadHillforts()
         }
         return super.onOptionsItemSelected(item)
-    }
+    }*/
 
 
     override fun onHillfortClick(hillfort: HillfortModel) {

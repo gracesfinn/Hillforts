@@ -41,37 +41,74 @@
                 android:orientation="vertical"
                 android:layout_margin="15dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    />
 
-
-                <EditText
-                    android:id="@+id/update_email"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Shrine.TextInputLayout"
+                    android:paddingTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Update Email" />
+                    android:hint="Updated Email Address"
+                    app:errorEnabled="true">
 
-                <EditText
-                    android:id="@+id/update_password"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Shrine.TextInputLayout"
+                    android:paddingTop="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Change Password"
-                    android:inputType="textPassword"/>
+                    android:hint="Verify Email Address"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_email2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
                     android:id="@+id/settingsBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
+                    android:background="@drawable/custom_button"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_settings"
                     android:textColor="@color/colorPrimaryLight"
                     android:textSize="16sp"/>
+                <Button
+                    android:id="@+id/resetPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/custom_button"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="Reset Password"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textSize="16sp"/>
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="391dp"
                     android:gravity="center"
                     android:visibility="visible"
                     app:srcCompat="@drawable/logo"
