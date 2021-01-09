@@ -48,8 +48,6 @@ class HillfortListView: BaseView(), HillfortListener {
 
     lateinit var presenter: HillfortListPresenter
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort_list)
@@ -70,21 +68,15 @@ class HillfortListView: BaseView(), HillfortListener {
             true
         }
 
-
         presenter = initPresenter(HillfortListPresenter(this)) as HillfortListPresenter
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-
-
-
+        presenter.loadHillforts()
 
         addNew.setOnClickListener{
             presenter.doAddHillfort()
         }
-
-        presenter.loadHillforts()
-
 
     }
 
@@ -105,7 +97,7 @@ class HillfortListView: BaseView(), HillfortListener {
 
             R.id.item_settings -> startActivityForResult(intentFor<SettingsActivity>().putExtra("User_edit", user), 0)
             R.id.item_logout -> presenter.doLogout()
-           // R.id.item_navDrawer -> startActivityForResult(intentFor<NavBarActivity>().putExtra("User_edit", user),0)
+            R.id.item_home-> presenter.doShowList()
             R.id.item_map -> presenter.doShowHillfortsMap()
             R.id.item_favourite -> presenter.loadHillforts()
         }
@@ -113,19 +105,15 @@ class HillfortListView: BaseView(), HillfortListener {
     }
 
 
-
     override fun onHillfortClick(hillfort: HillfortModel) {
         presenter.doEditHillfort(hillfort)
     }
-
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
        presenter.loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)
     }
-
-
 
 
 }

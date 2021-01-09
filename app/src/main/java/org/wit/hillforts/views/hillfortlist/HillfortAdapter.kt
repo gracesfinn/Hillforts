@@ -41,15 +41,14 @@ class HillfortAdapter constructor(
             itemView.hillfortTitle.text = hillfort.title
             itemView.description.text = hillfort.description
             Glide.with(itemView.context).load(hillfort.image1).into(itemView.imageIcon);
+            itemView.ratingBar2.rating = hillfort.rating
 
             var visitedString =
                 if (hillfort.visited)
                     "Visited"
             else
                     "Not Visited"
-
             itemView.visited2.text = "${visitedString}"
-
 
 
             itemView.setOnClickListener {

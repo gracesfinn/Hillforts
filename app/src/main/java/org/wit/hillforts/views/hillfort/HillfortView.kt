@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.activity_hillfort.additionalNotes
-import kotlinx.android.synthetic.main.activity_hillfort.btnAdd
+
 import kotlinx.android.synthetic.main.activity_hillfort.chooseImage1
 import kotlinx.android.synthetic.main.activity_hillfort.chooseImage2
 import kotlinx.android.synthetic.main.activity_hillfort.chooseImage3
@@ -41,6 +41,8 @@ class HillfortView: BaseView(),AnkoLogger {
     lateinit var presenter: HillfortPresenter
     var hillfort = HillfortModel()
     lateinit var map: GoogleMap
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,20 +131,6 @@ class HillfortView: BaseView(),AnkoLogger {
 
 
 
-        btnAdd.setOnClickListener {
-            if (hillfortTitle.text.toString().isEmpty()) {
-                toast(R.string.enter_hillfort_title)
-            } else {
-                presenter.doAddOrSave(
-                    hillfortTitle.text.toString(),
-                    description.text.toString(),
-                    additionalNotes.text.toString(),
-                    dateVisited.dayOfMonth
-                )
-            }
-        }
-
-
     }
 
     override fun showHillfort(hillfort: HillfortModel) {
@@ -174,7 +162,6 @@ class HillfortView: BaseView(),AnkoLogger {
 
         this.showLocation(hillfort.location)
 
-        btnAdd.setText(R.string.save_hillfort)
 
     }
 
@@ -197,8 +184,24 @@ class HillfortView: BaseView(),AnkoLogger {
             R.id.item_delete -> {
                 presenter.doDelete()
             }
-            R.id.item_cancel -> {
-                presenter.doCancel()
+            R.id.item_save -> {
+                if (hillfortTitle.text.toString().isEmpty()) {
+                    toast(R.string.enter_hillfort_title)
+                } else {
+                    presenter.doAddOrSave(
+                        hillfortTitle.text.toString(),
+                        description.text.toString(),
+                        additionalNotes.text.toString(),
+                        dateVisited.dayOfMonth,
+                        visited.isChecked,
+                        favourite.isChecked,
+
+
+
+
+                    // Is everything getting saved?
+                    )
+                }
             }
         }
         return super.onOptionsItemSelected(item)

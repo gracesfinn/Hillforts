@@ -41,14 +41,7 @@
                 android:orientation="vertical"
                 android:layout_margin="15dp">
 
-                <TextView
-                    android:id="@+id/registerTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:text="Login" />
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.Shrine.TextInputLayout"
@@ -81,39 +74,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-
-                <Button
-                    android:id="@+id/userLoginBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="8dp"
-                    android:stateListAnimator="@null"
-                    android:text="@string/button_login"
-                    android:textColor="@color/colorPrimaryLight"
-                    android:textSize="16sp"/>
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Not a member?"
-                    android:gravity="center"/>
-
-                <Button
-                    android:id="@+id/userLoginRegBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="8dp"
-                    android:stateListAnimator="@null"
-                    android:text="@string/button_register"
-                    android:textColor="@color/colorPrimaryLight"
-                    android:textSize="16sp"/>
-
                 <ProgressBar
                     android:id="@+id/progressBar"
                     style="@style/Widget.AppCompat.ProgressBar"
@@ -128,9 +88,41 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/userLoginRegBtn" />
 
+                <Button
+                    android:id="@+id/userLoginBtn"
 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/custom_button"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:stateListAnimator="@null"
+                    app:icon ="@drawable/ic_login"
+                    android:text="@string/button_login"
 
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Not a member?"
+                    android:gravity="center"/>
 
+                <Button
+                    android:id="@+id/userLoginRegBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/custom_button"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_register"
+                    android:textColor="@color/colorPrimaryLight"
+                    app:icon ="@drawable/ic_add_icon"
+                    android:textSize="16sp"/>
 
 
             </LinearLayout>

@@ -95,6 +95,10 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
         description: String,
         additionalNotes: String,
         dateVisited: Int,
+        visited: Boolean,
+        favourite: Boolean,
+
+
 
     ) {
         hillfort.title = hillfortTitle
@@ -103,6 +107,8 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
         hillfort.dayVisited = dateVisited
         hillfort.monthVisited = dateVisited
         hillfort.yearVisited = dateVisited
+        hillfort.visited = visited
+        hillfort.favourite = favourite
 
        doAsync {
            if (edit) {

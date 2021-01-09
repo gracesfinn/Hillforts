@@ -3,6 +3,7 @@ package org.wit.hillforts.views.hillfortlist
 import android.system.Os.remove
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import org.jetbrains.anko.*
 import org.wit.hillforts.helpers.checkLocationPermissions
 import org.wit.hillforts.models.HillfortModel
@@ -34,6 +35,10 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.FAVOURITE)
     }
 
+    fun doShowList() {
+        view?.navigateTo(VIEW.LIST)
+    }
+
     fun doLogout() {
         FirebaseAuth.getInstance().signOut()
         app.hillforts.clear()
@@ -41,6 +46,35 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun loadHillforts() {
+        doAsync {
+            val hillforts = app.hillforts.findAll()
+            var favHillforts = mutableListOf<HillfortModel>()
+            uiThread {
+                if (view!!.intent.hasExtra("favourite")) {
+                    view!!.toolbar.title = "Favourite Hillforts"
+                    for (hillfort in hillforts) {
+                        if (hillfort.favourite == true) {
+                            favHillforts.add(hillfort)
+                        }
+                    }
+                    view?.showHillforts(favHillforts)
+                }
+                else {
+                    view?.showHillforts(hillforts)
+                }
+            }
+        }
+    }
+
+   /* fun loadHillforts() {
+        doAsync {
+            val hillforts = app.hillforts.findAll()
+            uiThread {
+                view?.showHillforts(hillforts)
+            }
+        }
+    } */
+    /*fun loadHillforts() {
         val hillforts = app.hillforts.findAll()
         if (view?.intent!!.hasExtra("favourite")) {
             val favHillforts = hillforts.toMutableList()
@@ -64,5 +98,5 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
         }
 
-    }
+    } */
 }

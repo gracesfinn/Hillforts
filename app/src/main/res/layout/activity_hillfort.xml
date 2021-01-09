@@ -50,6 +50,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="136dp" >
 
+
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -119,7 +121,7 @@
                         android:layout_height="24dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
-                        android:text="Location"
+                        android:text="Coordinates"
                         android:textAlignment="center"
                         app:layout_constraintStart_toEndOf="@+id/hillfortTitle"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -130,6 +132,12 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:gravity="center"
+                android:textSize="14sp"/>
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView2"
@@ -145,30 +153,46 @@
                 app:layout_constraintTop_toBottomOf="@+id/hillfortLocation" />
 
 
-            <CheckBox
-                android:id="@+id/visited"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:text="Visited"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"
-                />
+                android:layout_height="91dp">
 
-            <CheckBox
-                android:id="@+id/favourite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:padding="8dp"
-                android:text="Add to Favourites"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+                <CheckBox
+                    android:id="@+id/favourite"
+                    android:layout_width="184dp"
+                    android:layout_height="59dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:text="Add to Favourites"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/visited"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/visited"
+                    android:layout_width="145dp"
+                    android:layout_height="59dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:text="Visited"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@+id/favourite"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -185,9 +209,11 @@
                 android:calendarViewShown="false"
                 />
 
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="127dp">
+                android:layout_height="114dp">
 
                 <RatingBar
                     android:id="@+id/ratingBar"
@@ -223,7 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/custom_button"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
                 android:text="@string/button_addImage1"
@@ -241,7 +267,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/custom_button"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
                 android:text="@string/button_addImage2"
@@ -259,10 +285,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/custom_button"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
-                android:text="@string/button_addImage2"
+                android:text="@string/button_addImage3"
+
                 android:textColor="@color/colorPrimaryLight"
                 android:textSize="16sp"/>
 
@@ -277,10 +304,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/custom_button"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
-                android:text="@string/button_addImage2"
+                android:text="@string/button_addImage4"
                 android:textColor="@color/colorPrimaryLight"
                 android:textSize="16sp"/>
 
@@ -306,20 +333,6 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 />
 
-
-
-            <Button
-                android:id="@+id/btnAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:background="@color/colorAccent"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:stateListAnimator="@null"
-                android:text="@string/button_addHillfort"
-                android:textColor="@color/colorPrimaryLight"
-                android:textSize="16sp" />
 
            
 
