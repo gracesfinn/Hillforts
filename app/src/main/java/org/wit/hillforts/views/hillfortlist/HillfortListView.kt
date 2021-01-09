@@ -63,6 +63,7 @@ class HillfortListView: BaseView(), HillfortListener {
                 R.id.item_map -> presenter.doShowHillfortsMap()
                 R.id.item_favourite -> presenter.doShowFavourites()
                 R.id.item_settings -> presenter.doUpdateUser()
+                R.id.item_home-> presenter.doShowList()
             }
             true
         }
@@ -96,7 +97,7 @@ class HillfortListView: BaseView(), HillfortListener {
 
             R.id.item_settings -> presenter.doUpdateUser()
             R.id.item_logout -> presenter.doLogout()
-            R.id.item_home-> presenter.doShowList()
+
             R.id.item_map -> presenter.doShowHillfortsMap()
             R.id.item_favourite -> presenter.loadHillforts()
         }

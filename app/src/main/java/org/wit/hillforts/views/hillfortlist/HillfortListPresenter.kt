@@ -36,7 +36,7 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doShowList() {
-        view?.navigateTo(VIEW.LIST)
+        loadHillforts()
     }
 
     fun doLogout() {

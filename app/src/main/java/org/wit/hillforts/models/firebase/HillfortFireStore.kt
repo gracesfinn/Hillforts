@@ -19,7 +19,6 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
 
     val hillforts = ArrayList<HillfortModel>()
 
-
     lateinit var userId : String
     lateinit var db: DatabaseReference
     lateinit var st: StorageReference
@@ -36,7 +35,7 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
     }
 
     override fun findFavourites(favourite: Boolean): List<HillfortModel> {
-       // val favouriteHillforts : HillfortModel? = hillforts.find{ p -> p.favourite == true}
+        // val favouriteHillforts : HillfortModel? = hillforts.find{ p -> p.favourite == true}
         return hillforts
     }
 
@@ -236,10 +235,4 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
             }
         }
     }
-
-
-
-
 }
-
-

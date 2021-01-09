@@ -42,9 +42,10 @@
                 android:layout_margin="15dp">
 
                 <TextView
+                    android:id="@+id/user_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
+                    android:text="Email"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     />
 

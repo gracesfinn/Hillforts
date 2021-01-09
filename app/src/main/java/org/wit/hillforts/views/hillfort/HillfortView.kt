@@ -26,6 +26,9 @@ import kotlinx.android.synthetic.main.activity_hillfort.hillfortImage4
 import kotlinx.android.synthetic.main.activity_hillfort.hillfortTitle
 import kotlinx.android.synthetic.main.activity_hillfort.toolbarAdd
 import kotlinx.android.synthetic.main.activity_hillfort.visited
+import kotlinx.android.synthetic.main.activity_hillfort_list.*
+import kotlinx.android.synthetic.main.activity_hillfort_map.*
+import kotlinx.android.synthetic.main.activity_hillfort_map.toolbar
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
@@ -55,8 +58,9 @@ class HillfortView: BaseView(),AnkoLogger {
             exitTransition = Explode()
         }
         setContentView(R.layout.activity_hillfort)
-
-        super.init(toolbarAdd, true)
+        //super.init(toolbar, true)
+        super.init(toolbarAdd, false)
+        //setSupportActionBar(toolbarAdd)
 
         info("Hillfort Activity started..")
 
@@ -96,7 +100,9 @@ class HillfortView: BaseView(),AnkoLogger {
                 hillfortTitle.text.toString(),
                 description.text.toString(),
                 additionalNotes.text.toString(),
-                dateVisited.dayOfMonth
+                dateVisited.dayOfMonth,
+                dateVisited.month,
+                dateVisited.year
             )
             presenter.doSelectImage1()
         }
@@ -105,7 +111,9 @@ class HillfortView: BaseView(),AnkoLogger {
                 hillfortTitle.text.toString(),
                 description.text.toString(),
                 additionalNotes.text.toString(),
-                dateVisited.dayOfMonth
+                dateVisited.dayOfMonth,
+                dateVisited.month,
+                dateVisited.year
             )
             presenter.doSelectImage2()
         }
@@ -114,7 +122,9 @@ class HillfortView: BaseView(),AnkoLogger {
                 hillfortTitle.text.toString(),
                 description.text.toString(),
                 additionalNotes.text.toString(),
-                dateVisited.dayOfMonth
+                dateVisited.dayOfMonth,
+                dateVisited.month,
+                dateVisited.year
             )
             presenter.doSelectImage3()
         }
@@ -123,7 +133,9 @@ class HillfortView: BaseView(),AnkoLogger {
                 hillfortTitle.text.toString(),
                 description.text.toString(),
                 additionalNotes.text.toString(),
-                dateVisited.dayOfMonth
+                dateVisited.dayOfMonth,
+                dateVisited.month,
+                dateVisited.year
             )
             presenter.doSelectImage4()
         }
@@ -193,11 +205,8 @@ class HillfortView: BaseView(),AnkoLogger {
                         description.text.toString(),
                         additionalNotes.text.toString(),
                         dateVisited.dayOfMonth,
-                        visited.isChecked,
-                        favourite.isChecked,
-
-
-
+                        dateVisited.month,
+                        dateVisited.year,
 
                     // Is everything getting saved?
                     )

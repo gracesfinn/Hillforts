@@ -23,8 +23,10 @@ class SettingsView : BaseView() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        setSupportActionBar(toolbar)
-        toolbar.title = user?.email
+        setSupportActionBar(toolbarAdd)
+
+
+        user_email.text = user?.email
 
         presenter = initPresenter(SettingsPresenter(this)) as SettingsPresenter
 
