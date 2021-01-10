@@ -37,7 +37,8 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun doShowList() {
-        loadHillforts()
+        view!!.intent.removeExtra("favourite")
+        view?.navigateTo(VIEW.LIST)
         Log.d(ContentValues.TAG, "Back to home")
     }
 
