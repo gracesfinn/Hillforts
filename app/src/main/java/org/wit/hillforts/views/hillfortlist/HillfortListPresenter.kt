@@ -1,5 +1,6 @@
 package org.wit.hillforts.views.hillfortlist
 
+import android.content.ContentValues
 import android.system.Os.remove
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
@@ -37,6 +38,7 @@ class HillfortListPresenter(view: BaseView) : BasePresenter(view) {
 
     fun doShowList() {
         loadHillforts()
+        Log.d(ContentValues.TAG, "Back to home")
     }
 
     fun doLogout() {

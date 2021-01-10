@@ -40,6 +40,8 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
     }
 
     override fun create(hillfort: HillfortModel) {
+        db = FirebaseDatabase.getInstance().reference
+        userId = FirebaseAuth.getInstance().currentUser!!.uid
         val key = db.child("users").child(userId).child("hillforts").push().key
         key?.let {
             hillfort.fbId = key
@@ -90,19 +92,25 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
             description = "The site is located at Beenlea Head, c. 5km SE of Tramore on the SE coast of Co. Waterford.",
             visited = false,
             additionalNotes = "",
-            image1 = "src/main/res/drawable/coolum.PNG",
-            location = Location(52.134562, -7.080937)
+            image1 = "https://firebasestorage.googleapis.com/v0/b/hillfort-auth.appspot.com/o/qpklQTe7rmgYsfgdnQYTJTOyww33%2F17?alt=media&token=5ca3f178-5e7d-4fff-8bb6-8de306302e61",
+            location = Location(52.134562, -7.080937),
+            dayVisited = 1,
+            monthVisited = 0,
+            yearVisited = 2021
 
         )
         create(hillfort1)
         val hillfort2 = HillfortModel(
             id = generateRandomId(),
             title = "Dunmore",
-            description = "The headland, known locally as the ÇBlack Knob can be described as a coastal promontory measuring 130m E-W by 60m N-S, projecting E into Waterford Harbour at an altitude of 8m OD. ",
+            description = "The headland, known locally as the Black Knob can be described as a coastal promontory measuring 130m E-W by 60m N-S, projecting E into Waterford Harbour at an altitude of 8m OD. ",
             visited = false,
             additionalNotes = "",
-            image1 = "src/main/res/drawable/dunmore.PNG",
-            location = Location(52.145954, -6.991018)
+            image1 = "https://firebasestorage.googleapis.com/v0/b/hillfort-auth.appspot.com/o/h50kDn4SpFZIZRIH6i0xJqh9tkj1%2F19?alt=media&token=7886a9fd-ac4e-4d88-933f-b3755e2b2b30",
+            location = Location(52.145954, -6.991018),
+            dayVisited = 1,
+            monthVisited = 0,
+            yearVisited = 2021
 
         )
         create(hillfort2)
@@ -110,11 +118,14 @@ class HillfortFireStore(val context: Context) : HillfortStore, AnkoLogger {
             id = generateRandomId(),
             title = "Rathmoylan",
             description = " This coastal promontory is located c. 2.5km SW of Dunmore East town in Co. Waterford. " +
-                    "Marked as an ÇEntrenchment on the first edition 6-inch map, the promontory can be described as a triangular area with steep grassy slopes on either flank. ",
+                    "Marked as an Entrenchment on the first edition 6-inch map, the promontory can be described as a triangular area with steep grassy slopes on either flank. ",
             visited = false,
             additionalNotes = "",
-            image1 = "src/main/res/drawable/rathmoylan.PNG",
-            location = Location(52.134654, -7.035038)
+            image1 = "https://firebasestorage.googleapis.com/v0/b/hillfort-auth.appspot.com/o/h50kDn4SpFZIZRIH6i0xJqh9tkj1%2F17?alt=media&token=59b58923-b86a-490e-b60f-fd1b4e932983",
+            location = Location(52.134654, -7.035038),
+            dayVisited = 1,
+            monthVisited = 0,
+            yearVisited = 2021
         )
         create(hillfort3)
 

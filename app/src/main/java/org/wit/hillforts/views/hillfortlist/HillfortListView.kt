@@ -39,7 +39,7 @@ import org.wit.hillforts.hillfortlist.HillfortListener
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.views.BaseView
 import org.wit.hillforts.views.VIEW
-import org.wit.hillforts.views.favourites.FavouriteView
+
 import org.wit.hillforts.views.location.EditLocationView
 import org.wit.hillforts.views.login.LoginView
 import org.wit.hillforts.views.map.HillfortMapView
@@ -92,17 +92,7 @@ class HillfortListView: BaseView(), HillfortListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item?.itemId) {
 
-            R.id.item_settings -> presenter.doUpdateUser()
-            R.id.item_logout -> presenter.doLogout()
-
-            R.id.item_map -> presenter.doShowHillfortsMap()
-            R.id.item_favourite -> presenter.loadHillforts()
-        }
-        return super.onOptionsItemSelected(item)
-    }*/
 
 
     override fun onHillfortClick(hillfort: HillfortModel) {

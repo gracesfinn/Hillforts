@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_hillfort_map.*
 import kotlinx.android.synthetic.main.activity_hillfort_map.mapView
 import kotlinx.android.synthetic.main.activity_hillfort_map.toolbar
 import kotlinx.android.synthetic.main.activity_map.*
+import kotlinx.android.synthetic.main.new_card.view.*
 import org.wit.hillforts.R
 import org.wit.hillforts.helpers.readImageFromPath
 import org.wit.hillforts.models.HillfortModel
@@ -36,7 +37,12 @@ class HillfortMapView: BaseView(), GoogleMap.OnMarkerClickListener {
 
     override fun showHillfort(hillfort: HillfortModel) {
         currentTitle.text = hillfort.title
-        currentDescription.text = hillfort.description
+        var visitedString =
+            if (hillfort.visited == true)
+                "Visited"
+            else
+                "Not Visited"
+        currentVisited.text = "${visitedString}"
         Glide.with(this).load(hillfort.image1).into(currentImage);
     }
 

@@ -21,7 +21,7 @@
     <string name="button_location">Set Location</string>
     <string name="button_register">Register</string>
     <string name="button_login">Login</string>
-    <string name="button_settings">Update</string>
+    <string name="button_settings">Update and Sign In</string>
     <string name="title_activity_map">Map of Hillforts</string>
     <string name="menu_cancelRegistration">Cancel</string>
     <string name="registration_error"> Enter All Fields</string>

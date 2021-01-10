@@ -68,19 +68,18 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/hillfort_title_placeholder"
                     app:layout_constraintEnd_toStartOf="@+id/currentImage"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/currentDescription"
+                    android:id="@+id/currentVisited"
                     android:layout_width="136dp"
                     android:layout_height="22dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/hillfort_description_placeholder"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/currentImage"
                     app:layout_constraintStart_toStartOf="parent"

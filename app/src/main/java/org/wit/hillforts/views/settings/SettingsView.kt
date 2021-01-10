@@ -1,8 +1,11 @@
 package org.wit.hillforts.views.settings
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_hillfort.*
 import kotlinx.android.synthetic.main.activity_hillfort_map.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.user_login.*
@@ -47,6 +50,7 @@ class SettingsView : BaseView() {
             else {
                 toast("Email Updated")
                 presenter.doUpdateEmail(email)
+                presenter.doLogout()
             }
         }
 
@@ -54,7 +58,22 @@ class SettingsView : BaseView() {
             toast("Password Reset Sent - Please Check Your Email")
             presenter.doSendPasswordReset()
 
+
         }
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_cancel, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item?.itemId) {
+            R.id.item_cancel -> {
+                presenter.doCancel()
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

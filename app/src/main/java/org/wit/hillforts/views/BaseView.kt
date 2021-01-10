@@ -11,7 +11,6 @@ import org.jetbrains.anko.AnkoLogger
 import org.wit.hillforts.models.HillfortModel
 import org.wit.hillforts.models.Location
 import org.wit.hillforts.models.UserModel
-import org.wit.hillforts.views.favourites.FavouriteView
 import org.wit.hillforts.views.hillfort.HillfortView
 import org.wit.hillforts.views.hillfortlist.HillfortListView
 import org.wit.hillforts.views.location.EditLocationView

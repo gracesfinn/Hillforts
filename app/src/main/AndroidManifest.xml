@@ -39,10 +39,6 @@
             android:value=".views.hillfort.HillfortView" />
     </activity>
 
-        <activity
-            android:name=".activities.NavBarActivity"
-            android:label="@string/nav_header_title"
-            android:theme="@style/Theme.Shrine.NoActionBar" />
 
     <activity android:name=".views.login.LoginView"
         android:label="@string/title_activity_login"
@@ -52,11 +48,6 @@
 
         <activity android:name=".views.hillfortlist.HillfortListView" />
 
-        <activity android:name=".views.favourites.FavouriteView" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.hillfortlist.HillfortListView" />
-        </activity>
 
         <activity android:name=".views.map.HillfortMapView"
             android:label="@string/title_activity_map"

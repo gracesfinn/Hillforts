@@ -48,5 +48,14 @@ class SettingsPresenter (view: BaseView) : BasePresenter(view) {
 
     }
 
+    fun doCancel() {
+        view?.finish()
+    }
+
+    fun doLogout() {
+        FirebaseAuth.getInstance().signOut()
+        view?.navigateTo(VIEW.LOGIN)
+    }
+
 
 }
