@@ -4,14 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.PersistableBundle
 import android.view.Window
 import android.view.WindowManager
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.hillforts.R
-import org.wit.hillforts.main.MainApp
-import org.wit.hillforts.activities.WelcomeActivity
+import org.wit.hillforts.views.login.LoginView
 
 class SplashActivity : AppCompatActivity(), AnkoLogger {
 
@@ -29,7 +27,7 @@ class SplashActivity : AppCompatActivity(), AnkoLogger {
         //4second splash time
         Handler().postDelayed({
             //start main activity
-            startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
+            startActivity(Intent(this@SplashActivity, LoginView::class.java))
             info("Splash Activity started..")
             //finish this activity
             finish()

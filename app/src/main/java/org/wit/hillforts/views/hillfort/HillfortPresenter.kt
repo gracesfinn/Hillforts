@@ -17,6 +17,7 @@ import org.wit.hillforts.models.Location
 import org.wit.hillforts.models.UserModel
 import org.wit.hillforts.views.*
 import org.wit.hillforts.views.hillfortlist.HillfortListView
+import java.time.Month
 
 class HillfortPresenter (view: BaseView) : BasePresenter(view) {
 
@@ -27,6 +28,7 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
     var map: GoogleMap? = null
     var locationService: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(view)
     val locationRequest = createDefaultLocationRequest()
+    var locationManualyChanged = false;
 
 
     init {
@@ -62,7 +64,9 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
             override fun onLocationResult(locationResult: LocationResult?) {
                 if (locationResult != null && locationResult.locations != null) {
                     val l = locationResult.locations.last()
-                    locationUpdate(Location(l.latitude, l.longitude))
+                    if (!locationManualyChanged) {
+                        locationUpdate(Location(l.latitude, l.longitude))
+                    }
                 }
             }
         }
@@ -91,15 +95,17 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
         hillfortTitle: String,
         description: String,
         additionalNotes: String,
-        dateVisited: Int,
-
+        dayOfMonth: Int,
+        month: Int,
+        year: Int
     ) {
         hillfort.title = hillfortTitle
         hillfort.description = description
         hillfort.additionalNotes = additionalNotes
-        hillfort.dayVisited = dateVisited
-        hillfort.monthVisited = dateVisited
-        hillfort.yearVisited = dateVisited
+        hillfort.dayVisited = dayOfMonth
+        hillfort.monthVisited = month
+        hillfort.yearVisited = year
+
 
        doAsync {
            if (edit) {
@@ -131,17 +137,21 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
     }
 
     fun cacheHillfort(
-        title: String,
+        hillfortTitle: String,
         description: String,
         additionalNotes: String,
-        dateVisited: Int)
+        dayOfMonth: Int,
+        month: Int,
+        year: Int,
+        )
     {
-        hillfort.title = title
+        hillfort.title = hillfortTitle
         hillfort.description = description
         hillfort.additionalNotes = additionalNotes
-        hillfort.dayVisited = dateVisited
-        hillfort.monthVisited = dateVisited
-        hillfort.yearVisited = dateVisited
+        hillfort.dayVisited = dayOfMonth
+        hillfort.monthVisited = month
+        hillfort.yearVisited = year
+
     }
 
     fun doSelectImage1() {
@@ -160,11 +170,28 @@ class HillfortPresenter (view: BaseView) : BasePresenter(view) {
         showImagePicker(view!!, IMAGE_REQUEST4)
     }
 
-    fun doCheckVisited(){
-//  Need to finish
+    fun doCheckVisited(
+        visited : Boolean
+    ){
+            hillfort.visited = visited
+
+    }
+
+
+    fun doCheckFavourite(
+        favourite : Boolean
+    ){
+        hillfort.favourite = favourite
+    }
+
+   fun doCheckRatingBar(
+    rating:Float
+    ){
+        hillfort.rating = rating
     }
 
     fun doSetLocation() {
+        locationManualyChanged = true;
         view?.navigateTo(VIEW.LOCATION, LOCATION_REQUEST, "location", Location(hillfort.location.lat, hillfort.location.lng, hillfort.location.zoom))
     }
 

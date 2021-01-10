@@ -3,12 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:icon="@drawable/ic_baseline_save"
+        android:id="@+id/item_save"
+        android:title="@string/save_hillfort"
+        app:showAsAction="always"/>
+    <item
+        android:icon="@drawable/ic_baseline_cancel"
         android:id="@+id/item_cancel"
         android:title="@string/menu_cancelHillfort"
         app:showAsAction="always"/>
 
     <item
+        android:icon="@drawable/ic_baseline_delete"
         android:id="@+id/item_delete"
         android:title="@string/menu_deleteHillfort"
         app:showAsAction="always"/>
+
+
 </menu>
